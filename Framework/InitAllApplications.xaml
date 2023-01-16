@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>804,1066.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,758.666666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="48">
@@ -68,7 +68,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="390,1002" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376,694" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessage" />
     </Sequence.Variables>
@@ -78,29 +78,8 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="348,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_TSI workflow" sap:VirtualizedContainerService.HintSize="348,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="TSIPortal\CheckPortalAccessibility_TSI.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Portal">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSIPortalUrl&quot;).ToString" />
-        </InArgument>
-        <OutArgument x:TypeArguments="ui:Browser" x:Key="out_BrowserInstance" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;TSISignInPageException&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(in_Config(&quot;TimeoutMedium&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(in_Config(&quot;NumberOfRetries&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_VIS workflow" sap:VirtualizedContainerService.HintSize="348,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\CheckPortalAccessibility_VIS.xaml">
+    <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_VIS workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\CheckPortalAccessibility_VIS.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">[in_Config("VISPortalUrl").ToString]</InArgument>
         <OutArgument x:TypeArguments="ui:Browser" x:Key="out_BrowserInstance" />
@@ -114,30 +93,18 @@
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckShareDriveAccessibility workflow" sap:VirtualizedContainerService.HintSize="348,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="ShareDrive\CheckShareDriveAccessibility.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateSharedDriveFolder workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ShareDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
           <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedDriveFolderPath&quot;).ToString" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedDriveNotAccessibleException&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_SharedFolderName" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CreateSharedDriveFolder workflow" sap:VirtualizedContainerService.HintSize="348,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ShareDrive\CreateSharedDriveFolder.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedDriveFolderPath&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="Convert.ToBoolean(in_Config(&quot;SharedFolderCreationFlag&quot;).ToString)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SharedFolderNotAvailableException&quot;).ToString" />
-        </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="348,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Outlook\GetEmails.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Outlook\GetEmails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_Filter">[in_Config("AttachmentEmailFilter").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[in_Config("OutlookFolderNameForInvoice").ToString]</InArgument>
