@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>976,2846</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,2846</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>VisPortalOtpVerification_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -210,7 +210,9 @@
                       <OutArgument x:TypeArguments="x:String" x:Key="out_EmailOtp">
                         <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="emailOtp" />
                       </OutArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_OtpEmailSubjectFilter" />
+                      <InArgument x:TypeArguments="x:String" x:Key="in_OtpEmailSubjectFilter">
+                        <Literal x:TypeArguments="x:String">FW: VIS eSupply OTP Verification</Literal>
+                      </InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
                         <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OtpVerificationFailedException&quot;).ToString" />
                       </InArgument>
