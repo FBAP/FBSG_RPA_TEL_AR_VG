@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>768.666666666667,2362.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,2288</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadFilesOnVisPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -74,13 +74,13 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="778.666666666667,2298" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap:VirtualizedContainerService.HintSize="778.666666666667,2223.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="736.666666666667,2206" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="736.666666666667,2131.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:Int32" Name="in_NumberOfRetries" />
       </Sequence.Variables>
@@ -91,23 +91,23 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:LogMessage DisplayName="Log Message: Upload files on VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="694.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Upload files on VIS portal flow - Started&quot;]" />
-      <TryCatch sap2010:Annotation.AnnotationText="Try catch added for Payment voucher registraion flow for VIS portal" DisplayName="Try Catch: Payment voucher registration flow - VIS portal" sap:VirtualizedContainerService.HintSize="694.666666666667,1814" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch sap2010:Annotation.AnnotationText="Try catch added for Payment voucher registraion flow for VIS portal" DisplayName="Try Catch: Payment voucher registration flow - VIS portal" sap:VirtualizedContainerService.HintSize="694.666666666667,1739.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <TryCatch.Try>
-          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: VIS portal" sap:VirtualizedContainerService.HintSize="656,1545.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="15f0ecfcf5a5e669778ac2f7e0f90a3f" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;" TimeoutMS="[in_Timeout]">
+          <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: VIS portal" sap:VirtualizedContainerService.HintSize="656,1470.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="15f0ecfcf5a5e669778ac2f7e0f90a3f" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;" TimeoutMS="[in_Timeout]">
             <ui:BrowserScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="622,1399.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="622,1284.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:Boolean" Name="isErrorOccured" />
-                    <Variable x:TypeArguments="x:Boolean" Name="isPaymentVoucherRegistrationPageExists" />
+                    <Variable x:TypeArguments="x:Boolean" Default="True" Name="isPaymentVoucherRegistrationPageExists" />
                     <Variable x:TypeArguments="x:TimeSpan" Name="in_RetryInterval" />
                   </Sequence.Variables>
                   <sap:WorkflowViewStateService.ViewState>
@@ -115,7 +115,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Payment Voucher Registration tab" sap:VirtualizedContainerService.HintSize="580,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                  <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="10000" DisplayName="Click: Payment Voucher Registration tab" sap:VirtualizedContainerService.HintSize="580,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="False">
                     <ui:Click.CursorPosition>
                       <ui:CursorPosition Position="Center">
                         <ui:CursorPosition.OffsetX>
@@ -136,11 +136,11 @@
                       <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="20e3682a-5119-4374-9431-13ae14688f83" InformativeScreenshot="eba49704a9aeb1966423332b9c87e105" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='*VIS*' /&gt;&lt;ctrl name='esupply.vis.com.tw says' role='dialog' /&gt;&lt;ctrl name='*An ajax error occurred:*' role='text' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
-                  <If sap2010:Annotation.AnnotationText="If Ajax error occured o VIS portal then it clicks on Ok button" Condition="[isErrorOccured]" DisplayName="If: Ajax error occured" sap:VirtualizedContainerService.HintSize="580,114.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+                  <If sap2010:Annotation.AnnotationText="If Ajax error occured o VIS portal then it clicks on Ok button" Condition="[isErrorOccured]" DisplayName="If: Ajax error occured" sap:VirtualizedContainerService.HintSize="580,328" sap2010:WorkflowViewState.IdRef="If_1">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -162,29 +162,52 @@
                       </ui:Click>
                     </If.Then>
                   </If>
-                  <ui:RetryScope DisplayName="Retry Scope: Payment Voucher registration" sap:VirtualizedContainerService.HintSize="580,380.666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
-                    <ui:RetryScope.ActivityBody>
-                      <ActivityAction>
-                        <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="580,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,392.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:RetryScope DisplayName="Retry Scope: Payment Voucher registration" sap:VirtualizedContainerService.HintSize="217.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
+                          <ui:RetryScope.ActivityBody>
+                            <ActivityAction>
+                              <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:RefreshBrowser Browser="{x:Null}" ContinueOnError="True" DisplayName="Refresh Browser: Payment Voucher Page" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="RefreshBrowser_1" />
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:RetryScope.ActivityBody>
+                          <ui:RetryScope.Condition>
+                            <ActivityFunc x:TypeArguments="x:Boolean">
+                              <ui:UiElementExists DisplayName="Element Exists: PO Number" Exists="[isPaymentVoucherRegistrationPageExists]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                                <ui:UiElementExists.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="66b0577f-3da0-49fb-968a-0b79db982e5c" InformativeScreenshot="860018adfa350e4918cccb67008a8af7" Selector="&lt;webctrl tag='INPUT' id='qPoNo' /&gt;" TimeoutMS="60000" WaitForReady="COMPLETE" />
+                                </ui:UiElementExists.Target>
+                              </ui:UiElementExists>
+                            </ActivityFunc>
+                          </ui:RetryScope.Condition>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:RefreshBrowser Browser="{x:Null}" ContinueOnError="True" DisplayName="Refresh Browser: Payment Voucher Page" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="RefreshBrowser_1" />
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:RetryScope.ActivityBody>
-                    <ui:RetryScope.Condition>
-                      <ActivityFunc x:TypeArguments="x:Boolean">
-                        <ui:UiElementExists DisplayName="Element Exists: Payment voucher registration list" Exists="[isPaymentVoucherRegistrationPageExists]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
-                          <ui:UiElementExists.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="66b0577f-3da0-49fb-968a-0b79db982e5c" InformativeScreenshot="f37c9720c8ec41a0107edbeb3bcced07" Selector="&lt;webctrl tag='DIV' aaname='*Payment Voucher Registration List*' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-                          </ui:UiElementExists.Target>
-                        </ui:UiElementExists>
-                      </ActivityFunc>
-                    </ui:RetryScope.Condition>
-                  </ui:RetryScope>
+                        </ui:RetryScope>
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
                   <If sap2010:Annotation.AnnotationText="If payment voucher registration list page exists then it proceed further else it throws exception" Condition="[isPaymentVoucherRegistrationPageExists]" DisplayName="If: Payment voucher registration list page exists" sap:VirtualizedContainerService.HintSize="580,305.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -196,7 +219,12 @@
                     <If.Then>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadFileFlow workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="VISPortal\UploadFileFlow.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
+                          <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">
+                            <Literal x:TypeArguments="x:String">C:\Users\603213\Downloads\vis_invoice_query_13Jan2023_163700.xlsx</Literal>
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                     </If.Then>
