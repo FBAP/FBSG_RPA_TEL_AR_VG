@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="in_dt_FlatFile" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_dt_PortalRecords" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
   </x:Members>
   <this:ForEachRowinDataTable.in_dt_PortalRecords>
     <InArgument x:TypeArguments="sd:DataTable" />
   </this:ForEachRowinDataTable.in_dt_PortalRecords>
-  <sap:VirtualizedContainerService.HintSize>804,1956.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1956.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -137,6 +138,7 @@
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Edit" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
@@ -187,6 +189,7 @@
                                 <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile">
                                   <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_FlatFile" />
                                 </InArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem" />
                               </ui:InvokeWorkflowFile.Arguments>
                             </ui:InvokeWorkflowFile>
                           </If.Then>

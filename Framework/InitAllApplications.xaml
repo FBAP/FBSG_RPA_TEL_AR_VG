@@ -173,7 +173,7 @@
                   </InArgument>
                 </ui:ExcelReadRange.Range>
               </ui:ExcelReadRange>
-              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Message="[out_dt_FlatFile.Rows.Count]" />
+              <ui:LogMessage DisplayName="Log Message: Flat file count " sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[out_dt_FlatFile.Rows.Count]" />
             </Sequence>
           </ActivityAction>
         </ui:ExcelApplicationScope.Body>
@@ -221,15 +221,9 @@
         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
         <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">
-          <Literal x:TypeArguments="x:String">Vendor Editing</Literal>
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_PortalRecords" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="flatFileRowCount" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">Vendor Editing</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">[out_dt_PortalRecords]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">[flatFileRowCount]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
