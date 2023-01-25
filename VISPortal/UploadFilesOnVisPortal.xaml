@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>804,2654.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,2654.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadFilesOnVisPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -79,6 +79,7 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="736.666666666667,2590" sap2010:WorkflowViewState.IdRef="Sequence_14">
@@ -224,7 +225,9 @@
                         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
                         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
                         <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
-                        <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">C:\Users\603213\Downloads\vis_invoice_query_13Jan2023_163700.xlsx</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">
+                          <Literal x:TypeArguments="x:String">C:\Users\603213\Downloads\vis_invoice_query_13Jan2023_163700.xlsx</Literal>
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
                   </If.Then>

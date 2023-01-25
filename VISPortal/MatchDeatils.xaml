@@ -84,7 +84,6 @@
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="MatchDeatils" sap:VirtualizedContainerService.HintSize="1120,2490.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -237,7 +236,7 @@
                   </ui:TypeInto>
                   <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text: Out Orig Amt" sap:VirtualizedContainerService.HintSize="580,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
                     <ui:GetValue.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fbfd8e9f-01f0-48d7-8c38-8a88767d43e9" InformativeScreenshot="9a2bc49a20938e48981473662fc6c423" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='*VIS* eSupply - Payment Voucher Registration Form' /&gt;&lt;webctrl isleaf='1' tableCol='10' tableRow='{0}' tag='TD' /&gt;&quot;, counter)]">
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="fbfd8e9f-01f0-48d7-8c38-8a88767d43e9" InformativeScreenshot="9a2bc49a20938e48981473662fc6c423" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='VIS eSupply - Payment Voucher Registration Form' /&gt;&lt;webctrl idx='2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='11' tableRow='{0}' tag='TD' /&gt;&quot;, Counter)]">
                         <ui:Target.TimeoutMS>
                           <InArgument x:TypeArguments="x:Int32" />
                         </ui:Target.TimeoutMS>
