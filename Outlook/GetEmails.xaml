@@ -10,7 +10,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1614</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1586.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetEmailAndSaveAttachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="50">
@@ -87,7 +87,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file reads email from the outlook and checks whether malbox have required emails or not. If not then it sends exception email to required persons and throws an exception." DisplayName="GetEmail" sap:VirtualizedContainerService.HintSize="702.666666666667,1549.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file reads email from the outlook and checks whether malbox have required emails or not. If not then it sends exception email to required persons and throws an exception." DisplayName="GetEmail" sap:VirtualizedContainerService.HintSize="606.666666666667,1522" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -95,14 +95,14 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Get email started" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Get Email from outlook flow - Started&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Get email started" sap:VirtualizedContainerService.HintSize="564.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Get Email from outlook flow - Started&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch sap2010:Annotation.AnnotationText="Try cath added for getting emails from the outlook" DisplayName="Try Catch: Get emails" sap:VirtualizedContainerService.HintSize="660.666666666667,1142.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Try cath added for getting emails from the outlook" DisplayName="Try Catch: Get emails" sap:VirtualizedContainerService.HintSize="564.666666666667,1115.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -110,7 +110,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence sap2010:Annotation.AnnotationText="Reads email from the outlook and checks whether inbox has required email or not" DisplayName="Sequence: Get email and check email is present or not" sap:VirtualizedContainerService.HintSize="622,850.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_4">
+        <Sequence sap2010:Annotation.AnnotationText="Reads email from the outlook and checks whether inbox has required email or not" DisplayName="Sequence: Get email and check email is present or not" sap:VirtualizedContainerService.HintSize="526,823.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -118,14 +118,14 @@
               <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="This activity reads email from the outlook inbox. Below are the parameters/arguments which are used:&#xA;1. in_FolderName= Specify Outlook folder name from where unread email should read.&#xA;2. in_Filter= Specify email filter to get the required unread emails.&#xA;3. in_AccountName = Specify outllok account name if required.&#xA;4. in_ExceptionMessage = Specify exception which you want to throw&#xA;&#xA;Output is stored out_MailMessage argument as a list of mail message" DisplayName="Get Outlook Mail Messages for VG" GetAttachements="False" sap:VirtualizedContainerService.HintSize="580,384" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[in_FolderName]" MarkAsRead="False" Messages="[out_MailMessage]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="5">
+          <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" FilterByMessageIds="{x:Null}" TimeoutMS="{x:Null}" sap2010:Annotation.AnnotationText="This activity reads email from the outlook inbox. Below are the parameters/arguments which are used:&#xA;1. in_FolderName= Specify Outlook folder name from where unread email should read.&#xA;2. in_Filter= Specify email filter to get the required unread emails.&#xA;3. in_AccountName = Specify outllok account name if required.&#xA;4. in_ExceptionMessage = Specify exception which you want to throw&#xA;&#xA;Output is stored out_MailMessage argument as a list of mail message" DisplayName="Get Outlook Mail Messages for VG" GetAttachements="False" sap:VirtualizedContainerService.HintSize="484,384" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_1" MailFolder="[in_FolderName]" MarkAsRead="False" Messages="[out_MailMessage]" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Top="5">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:GetOutlookMailMessages>
-          <If sap2010:Annotation.AnnotationText="Checks whether bot is able to get the required unread emails or not.&#xA;If No, it will throw an exception." Condition="[out_MailMessage.Count &gt; 0]" DisplayName="If: bot found required unread mail messages" sap:VirtualizedContainerService.HintSize="580,304" sap2010:WorkflowViewState.IdRef="If_1">
+          <If sap2010:Annotation.AnnotationText="Checks whether bot is able to get the required unread emails or not.&#xA;If No, it will throw an exception." Condition="[out_MailMessage.Count &gt; 0]" DisplayName="If: bot found required unread mail messages" sap:VirtualizedContainerService.HintSize="484,276.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -133,16 +133,6 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If.Then>
-              <ui:LogMessage DisplayName="Log Message: Email read" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Bot extracted &quot;+out_MailMessage.Count.ToString+ &quot;emails&quot;]">
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:LogMessage>
-            </If.Then>
             <If.Else>
               <Throw sap2010:Annotation.AnnotationText="Throws &quot;Email not found&quot; business exception" DisplayName="Throw: Email not found " Exception="[new BusinessRuleException(in_ExceptionMessage)]" sap:VirtualizedContainerService.HintSize="200,67.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_2">
                 <sap:WorkflowViewStateService.ViewState>
@@ -156,7 +146,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="530.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -176,7 +166,7 @@
             </ui:LogMessage>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="530.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -198,7 +188,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Get Email from outlook flow - Started" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Get Email from outlook flow - Ended&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Get Email from outlook flow - Started" sap:VirtualizedContainerService.HintSize="564.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Get Email from outlook flow - Ended&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
