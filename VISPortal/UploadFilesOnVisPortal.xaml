@@ -6,6 +6,7 @@
     <x:Property Name="in_ExceptionMessage" Type="InArgument(x:String)" />
     <x:Property Name="in_NumberOfRetries" Type="InArgument(x:Int32)" />
     <x:Property Name="in_RetryInterval" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_UploadFlatFilePath" Type="InArgument(x:String)" />
   </x:Members>
   <this:UploadFilesOnVisPortal.in_NumberOfRetries>
     <InArgument x:TypeArguments="x:Int32" />
@@ -16,7 +17,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,2654.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>726.666666666667,2654.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadFilesOnVisPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
