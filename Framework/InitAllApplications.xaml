@@ -1,9 +1,19 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Initialize_Applications" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="out_dt_FlatFile" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="out_dt_PortalRecords" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="in_VisUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_NumberOfRetries" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_RetryInterval" Type="InArgument(x:TimeSpan)" />
+    <x:Property Name="in_DelayBefore" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_TimeoutMedium" Type="InArgument(x:Int32)" />
+    <x:Property Name="out_dt_StatusReport" Type="OutArgument(sd:DataTable)" />
   </x:Members>
+  <this:Initialize_Applications.in_NumberOfRetries>
+    <InArgument x:TypeArguments="x:Int32" />
+  </this:Initialize_Applications.in_NumberOfRetries>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
@@ -89,7 +99,6 @@
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376.666666666667,1531.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="flatFileRowCount" />
-      <Variable x:TypeArguments="sd:DataTable" Name="out_dt_StatusReport" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -100,23 +109,35 @@
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_VIS workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\CheckPortalAccessibility_VIS.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">[in_Config("VISPortalUrl").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_VisUrl" />
+        </InArgument>
         <OutArgument x:TypeArguments="ui:Browser" x:Key="out_BrowserInstance" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[CInt(in_Config("NumberOfRetries").ToString)]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
+        </InArgument>
         <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("TimeoutMedium").ToString)]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("VISSignPageException").ToString]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeoutMedium" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISSignPageException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoice folder: VG_Invoices" DisplayName="Invoke CreateSharedDriveFolder workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoice folder: VG_Invoices" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath" />
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
       </ui:InvokeWorkflowFile.Arguments>
@@ -126,7 +147,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoice folder: Month_Year" DisplayName="Invoke CreateSharedDriveFolder workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoice folder: Month_Year" DisplayName="Invoke CreateSharedDriveFolder workflow  Month Year" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath" />
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
@@ -225,9 +246,7 @@
         <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
         <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath" />
         <InArgument x:TypeArguments="x:String" x:Key="in_FileExceptionMessage" />
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateRecordsOnPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="VISPortal\ValidateRecordsOnPortal.xaml">

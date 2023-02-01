@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator queue name to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueName" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="Allows the Orchestrator folder name where the queue is created to be passed as an argument, instead of only being defined in the configuration file." Name="in_OrchestratorQueueFolder" Type="InArgument(x:String)" />
@@ -9,7 +9,7 @@
   <sap:VirtualizedContainerService.HintSize>1153.33333333333,868</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Main2_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="34">
+    <scg:List x:TypeArguments="x:String" Capacity="35">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -44,10 +44,11 @@
       <x:String>System.Windows.Forms</x:String>
       <x:String>System.Windows.Forms.Integration</x:String>
       <x:String>System.ComponentModel</x:String>
+      <x:String>System.Security</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -245,6 +246,14 @@
                           <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">
                             <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_PortalRecords" />
                           </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderName" />
+                          <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName" />
+                          <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="visPaymentVoucherUrl" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="invoiceFolderPath" />
+                          </InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438.666666666667,352" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -257,36 +266,16 @@
                         <TryCatch.Try>
                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SetTransactionStatus (Success)" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">
-                                <mva:VisualBasicValue x:TypeArguments="ui:BusinessRuleException" ExpressionText="Nothing" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionField1" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField2">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionField2" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionID">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="TransactionID" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">
-                                <mva:VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="Nothing" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                                <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                              </InArgument>
-                              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
-                                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="RetryNumber" />
-                              </InOutArgument>
-                              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">
-                                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
-                              </InOutArgument>
-                              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">
-                                <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="ConsecutiveSystemExceptions" />
-                              </InOutArgument>
+                              <InArgument x:TypeArguments="ui:BusinessRuleException" x:Key="in_BusinessException">[Nothing]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField1">[TransactionField1]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionField2">[TransactionField2]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_TransactionID">[TransactionID]</InArgument>
+                              <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemException">[Nothing]</InArgument>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                              <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">[RetryNumber]</InOutArgument>
+                              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">[TransactionNumber]</InOutArgument>
+                              <InOutArgument x:TypeArguments="x:Int32" x:Key="io_ConsecutiveSystemExceptions">[ConsecutiveSystemExceptions]</InOutArgument>
                               <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_dt_StatusReport" />
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
@@ -469,9 +458,9 @@
                   </sap:WorkflowViewStateService.ViewState>
                   <Transition.Condition>[SystemException IsNot Nothing]</Transition.Condition>
                   <Transition.To>
-                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="254,106.666666666667" sap2010:WorkflowViewState.IdRef="State_2">
+                    <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="Read configuration file and initialize applications used in the process." DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="611.333333333333,4494.66666666667" sap2010:WorkflowViewState.IdRef="State_2">
                       <State.Entry>
-                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="564.666666666667,2356" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                        <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="564.666666666667,4065.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_2">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -479,7 +468,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <TryCatch.Try>
-                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="526,2118" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                            <Sequence DisplayName="Load configurations and open applications" sap:VirtualizedContainerService.HintSize="526,3827.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -593,11 +582,218 @@
                                   <Throw DisplayName="Throw Consecutive Exceptions exceeded" Exception="[new Exception(Config(&quot;ExceptionMessage_ConsecutiveErrors&quot;).ToString + &quot; Consecutive retry number: &quot; + (ConsecutiveSystemExceptions+1).ToString)]" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Throw_1" />
                                 </If.Then>
                               </If>
+                              <Sequence DisplayName="Sequence: Get asset values" sap:VirtualizedContainerService.HintSize="484,1669.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:LogMessage DisplayName="Log Message: Getting asset values" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_37" Level="Info" Message="[&quot;Getting asset values&quot;]" />
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;VISPortalUrl&quot;).ToString]" DisplayName="Get Asset: VIS Portal URL" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[visUrl]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;VISPaymentVoucherPage&quot;).ToString]" DisplayName="Get Asset: Payment voucher page URL" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_2">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[visPaymentVoucherUrl]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;RegexForOtp&quot;).ToString]" DisplayName="Get Asset: Regex for OTP" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[regexForOtp]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;DelayBefore&quot;).ToString]" DisplayName="Get Asset: Delay Before" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:Int32">[delayBefore]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;DelayAfter&quot;).ToString]" DisplayName="Get Asset: DelayAfter" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_5">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:Int32">[delayAfter]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;TimeoutMedium&quot;).ToString]" DisplayName="Get Asset: TimeoutMedium" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_6">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:Int32">[timeoutMedium]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;TimeoutShort&quot;).ToString]" DisplayName="Get Asset: TimeoutShort" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:Int32">[timeoutShort]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;NumberOfRetries&quot;).ToString]" DisplayName="Get Asset: NumberOfRetries" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:Int32">[numberOfRetries]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;TimeSpan&quot;).ToString]" DisplayName="Get Asset: TimeSpan" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_9">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[timeSpan]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;OtpFilterEmailSubject&quot;).ToString]" DisplayName="Get Asset: OtpFilterEmailSubject" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_10">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[emailSubjectOtpFilter]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;FlatFileFolderPath&quot;).ToString]" DisplayName="Get Asset: FlatFileFolderPath" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_11">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[flatFileFolderPath]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;InvoiceFolderPath&quot;).ToString]" DisplayName="Get Asset: InvoiceFolderPath" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_12">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[invoiceFolderPath]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;OutlookFolderNameForOtp&quot;).ToString]" DisplayName="Get Asset: OutlookFolderNameForOtp" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_13">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[outlookFolderNameForOtp]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;OutlookFolderNameForInvoice&quot;).ToString]" DisplayName="Get Asset: OutlookFolderNameForInvoice" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_14">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[invoiceFolderName]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;UploadFlatFilePath&quot;).ToString]" DisplayName="Get Asset: UploadFlatFilePath" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_15">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[uploadFlatFilePath]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                                <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="[Config(&quot;OutlookSentOnBehalfOnEmailName&quot;).ToString]" DisplayName="Get Asset: OutlookSentOnBehalfOnEmailName" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_16">
+                                  <ui:GetRobotAsset.Value>
+                                    <OutArgument x:TypeArguments="x:String">[onBehalfOfName]</OutArgument>
+                                  </ui:GetRobotAsset.Value>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:GetRobotAsset>
+                              </Sequence>
                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitiAllApplications workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllApplications.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
-                                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FlatFile">[dt_TransactionData]</OutArgument>
-                                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">[dt_PortalRecords]</OutArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
+                                  </InArgument>
+                                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_FlatFile">
+                                    <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_TransactionData" />
+                                  </OutArgument>
+                                  <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">
+                                    <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_PortalRecords" />
+                                  </OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_VisUrl">
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="visUrl" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="numberOfRetries" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="delayBefore" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="delayAfter" />
+                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TimeoutMedium">
+                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="timeoutMedium" />
+                                  </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -818,6 +1014,24 @@
       <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Used in case transactions are stored in a DataTable, for example, after being retrieved from a spreadsheet." Name="dt_TransactionData" />
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="ConsecutiveSystemExceptions" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_PortalRecords" />
+      <Variable x:TypeArguments="ss:SecureString" Name="visPassword" />
+      <Variable x:TypeArguments="x:String" Name="visUsername" />
+      <Variable x:TypeArguments="x:String" Name="visUrl" />
+      <Variable x:TypeArguments="x:String" Name="visPaymentVoucherUrl" />
+      <Variable x:TypeArguments="x:String" Name="regexForOtp" />
+      <Variable x:TypeArguments="x:Int32" Name="delayBefore" />
+      <Variable x:TypeArguments="x:Int32" Name="delayAfter" />
+      <Variable x:TypeArguments="x:Int32" Name="timeoutMedium" />
+      <Variable x:TypeArguments="x:Int32" Name="timeoutShort" />
+      <Variable x:TypeArguments="x:Int32" Name="numberOfRetries" />
+      <Variable x:TypeArguments="x:String" Name="timeSpan" />
+      <Variable x:TypeArguments="x:String" Name="emailSubjectOtpFilter" />
+      <Variable x:TypeArguments="x:String" Name="flatFileFolderPath" />
+      <Variable x:TypeArguments="x:String" Name="invoiceFolderPath" />
+      <Variable x:TypeArguments="x:String" Name="outlookFolderNameForOtp" />
+      <Variable x:TypeArguments="x:String" Name="invoiceFolderName" />
+      <Variable x:TypeArguments="x:String" Name="uploadFlatFilePath" />
+      <Variable x:TypeArguments="x:String" Name="onBehalfOfName" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>

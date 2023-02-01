@@ -3,11 +3,15 @@
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_dt_PortalRecords" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_InvoiceFolderName" Type="InArgument(x:String)" />
+    <x:Property Name="in_OnBehalfName" Type="InArgument(x:String)" />
+    <x:Property Name="in_PaymentVoucherUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1364</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1363.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -94,7 +98,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="376,1299.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="376.666666666667,1298.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessage" />
     </Sequence.Variables>
@@ -104,46 +108,28 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Processign invoice" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processing Invoice Number: &quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString]" />
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_6">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_7">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadFilesOnVisPortal workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="VISPortal\UploadFilesOnVisPortal.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries" />
-              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_FileExceptionMessage" />
-              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get invoice email from the folder" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Outlook\GetEmails.xaml">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Processign invoice" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processing Invoice Number: &quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get invoice email from the folder" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Outlook\GetEmails.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">["@SQL=urn:schemas:httpmail:subject LIKE '%"+in_TransactionItem("Invoice Num").ToString+"%'"]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[in_Config("OutlookFolderNameForInvoice").ToString]</InArgument>
-        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">[mailMessage]</OutArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_AccountName" />
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;@SQL=urn:schemas:httpmail:subject LIKE '%&quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString+&quot;%'&quot;" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderName" />
+        </InArgument>
+        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">
+          <mva:VisualBasicReference x:TypeArguments="scg:List(snm:MailMessage)" ExpressionText="mailMessage" />
+        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;InvoiceEmailNotFoundException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -151,24 +137,64 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadEmailAttachment workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Outlook\DownloadEmailAttachment.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Create invoice folder" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">[mailMessage]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_Filter" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderPath+in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
+          <Literal x:TypeArguments="x:Boolean" Value="True" />
+        </InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
+      </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadEmailAttachment workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Outlook\DownloadEmailAttachment.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">
+          <mva:VisualBasicValue x:TypeArguments="scg:List(snm:MailMessage)" ExpressionText="mailMessage" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FilterForPdfAttachment&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OnBehalfName" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ForEachRowPortalrecords workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="VISPortal\ForEachRowPortalrecords.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ForEachRowPortalrecords workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="VISPortal\ForEachRowPortalrecords.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">[in_dt_PortalRecords]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_PortalRecords" />
+        </InArgument>
         <InArgument x:TypeArguments="sd:DataRow" x:Key="in_FlatFileRow" />
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile" />
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
+          <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherUrl" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+    <ui:CommentOut DisplayName="Comment Out - Delete after testing" sap:VirtualizedContainerService.HintSize="334.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
@@ -207,34 +233,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_3">
-      <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_4">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateRecordsOnPortal workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="VISPortal\ValidateRecordsOnPortal.xaml">
-            <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl" />
-              <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">Vendor Editing</InArgument>
-              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords" />
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount" />
-            </ui:InvokeWorkflowFile.Arguments>
-          </ui:InvokeWorkflowFile>
-        </Sequence>
-      </ui:CommentOut.Body>
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-    </ui:CommentOut>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="334,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="334.666666666667,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
   </Sequence>
 </Activity>

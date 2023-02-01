@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1246.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>902.666666666667,2386.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckPortalAccessibility_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -97,7 +97,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether VIS portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility: VIS" sap:VirtualizedContainerService.HintSize="476,1182" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether VIS portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility: VIS" sap:VirtualizedContainerService.HintSize="912.666666666667,2322" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="exceptionFilePath" />
     </Sequence.Variables>
@@ -108,15 +108,15 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot; Login into VIS portal flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Opening VIS portal" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Opening VIS portal&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="870.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot; Login into VIS portal flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Opening VIS portal" sap:VirtualizedContainerService.HintSize="870.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Opening VIS portal&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added to check whether VIS portal login page exists or not.&#xA;If not, it sends exception email" DisplayName="Try Catch: VIS Portal homepage" sap:VirtualizedContainerService.HintSize="434,724.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added to check whether VIS portal login page exists or not.&#xA;If not, it sends exception email" DisplayName="Try Catch: VIS Portal homepage" sap:VirtualizedContainerService.HintSize="870.666666666667,1864.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -196,11 +196,21 @@
                   <If.Then>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This .xaml file login into VIS portal" DisplayName="Invoke LoginVisPortal workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="VISPortal\LoginVisPortal.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(in_Config("DelayBefore").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(in_Config("DelayAfter").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(in_Config("TimeoutMedium").ToString)]</InArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                        </InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ImageCaptchaFoundException&quot;).ToString" />
+                        </InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -220,12 +230,8 @@
                       </sap:WorkflowViewStateService.ViewState>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString" />
-                          </InArgument>
-                          <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
-                            <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="exceptionFilePath" />
-                          </InOutArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_Config("ExScreenshotsFolderPath").ToString]</InArgument>
+                          <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[exceptionFilePath]</InOutArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -256,18 +262,18 @@
         </ui:OpenBrowser>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,507.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="836.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ActivityAction x:TypeArguments="s:Exception">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception email if VIS portal failed to get login page" DisplayName="Sequence: Send VIS Login page exception" sap:VirtualizedContainerService.HintSize="376,436.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence sap2010:Annotation.AnnotationText="This sequence sends exception email if VIS portal failed to get login page" DisplayName="Sequence: Send VIS Login page exception" sap:VirtualizedContainerService.HintSize="376,454" sap2010:WorkflowViewState.IdRef="Sequence_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -285,20 +291,12 @@
               </ui:LogMessage>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Sends VIS login page exception" DisplayName="Invoke SendExceptionEmail workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Outlook\SendExceptionEmail.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISSignPageExceptionSubject&quot;).ToString" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISSignPageExceptionBody&quot;).ToString" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("VISSignPageExceptionSubject").ToString]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config("VISSignPageExceptionBody").ToString]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList" />
                   <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList" />
-                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="exceptionFilePath" />
-                  </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutlookSentOnBehalfOnEmailName&quot;).ToString" />
-                  </InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">[exceptionFilePath]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">[in_Config("OutlookSentOnBehalfOnEmailName").ToString]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -313,6 +311,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow -Ended" sap:VirtualizedContainerService.HintSize="434,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Login into VIS portal flow - Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow -Ended" sap:VirtualizedContainerService.HintSize="870.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Login into VIS portal flow - Ended&quot;]" />
   </Sequence>
 </Activity>
