@@ -86,8 +86,8 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="982.666666666667,2879.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_14">
@@ -227,15 +227,25 @@
                       <If.Then>
                         <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadFileFlow workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\UploadFileFlow.xaml">
                           <ui:InvokeWorkflowFile.Arguments>
-                            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
-                            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
-                            <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+                              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+                            </InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">
-                              <Literal x:TypeArguments="x:String">C:\Users\603213\Downloads\vis_invoice_query_13Jan2023_163700.xlsx</Literal>
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UploadFlatFilePath" />
                             </InArgument>
                             <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-                            <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries" />
-                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
+                            <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+                              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
+                            </InArgument>
+                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                            </InArgument>
                           </ui:InvokeWorkflowFile.Arguments>
                         </ui:InvokeWorkflowFile>
                       </If.Then>

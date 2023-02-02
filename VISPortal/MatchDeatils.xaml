@@ -8,6 +8,7 @@
     <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
     <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
     <x:Property Name="in_PaymentVoucherUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -308,7 +309,7 @@
                   </ui:GetValue>
                   <If Condition="[outOrigAmt.Contains(in_TransactionItem(&quot;Unit Price&quot;).ToString)]" DisplayName="If: Out Orig Amt matches with total invoice amount" sap:VirtualizedContainerService.HintSize="822.666666666667,789.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
                     <If.Then>
-                      <Sequence sap:VirtualizedContainerService.HintSize="376,301.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                      <Sequence DisplayName="Sequence: Upload invoice" sap:VirtualizedContainerService.HintSize="376,301.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_17">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -322,7 +323,7 @@
                               <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;InvoiceFolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString+&quot;\&quot;" />
                             </InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_Url">
-                              <Literal x:TypeArguments="x:String">https://esupply.vis.com.tw/esupply/pvrList.do</Literal>
+                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherUrl" />
                             </InArgument>
                             <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">
                               <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SelectStatusOptionOnVis&quot;).ToString" />
