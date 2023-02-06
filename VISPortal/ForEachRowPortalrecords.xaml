@@ -11,7 +11,7 @@
     <x:Property Name="in_PaymentVoucherUrl" Type="InArgument(x:String)" />
     <x:Property Name="in_InvoiceFolderPath" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1827.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,2076</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -82,7 +82,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="For Each invoice number" sap:VirtualizedContainerService.HintSize="680.666666666667,1762.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
+  <Sequence DisplayName="For Each invoice number" sap:VirtualizedContainerService.HintSize="680.666666666667,2011.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="RowCounter" />
       <Variable x:TypeArguments="x:String" Name="aaName" />
@@ -101,13 +101,13 @@
         <InArgument x:TypeArguments="x:Int32">1</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_PortalRecords]" DisplayName="For Each Row in Data Table - Portal records" sap:VirtualizedContainerService.HintSize="638.666666666667,1568.66666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_PortalRecords]" DisplayName="For Each Row in Data Table - Portal records" sap:VirtualizedContainerService.HintSize="638.666666666667,1817.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="604.666666666667,1450" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="604.666666666667,1698.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -121,7 +121,7 @@
                 <InArgument x:TypeArguments="x:Int32">[RowCounter+1]</InArgument>
               </Assign.Value>
             </Assign>
-            <TryCatch DisplayName="Try Catch: Get attribute" sap:VirtualizedContainerService.HintSize="562.666666666667,194" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+            <TryCatch DisplayName="Try Catch: Get attribute" sap:VirtualizedContainerService.HintSize="562.666666666667,442.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
               <TryCatch.Try>
                 <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute: Invocie number column" sap:VirtualizedContainerService.HintSize="334,204.666666666667" sap2010:WorkflowViewState.IdRef="GetAttribute_4">
                   <ui:GetAttribute.Result>
@@ -140,7 +140,7 @@
                 </ui:GetAttribute>
               </TryCatch.Try>
               <TryCatch.Catches>
-                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>

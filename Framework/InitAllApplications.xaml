@@ -112,15 +112,29 @@
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_VIS workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\CheckPortalAccessibility_VIS.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">[in_VisUrl]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_VisUrl" />
+        </InArgument>
         <OutArgument x:TypeArguments="ui:Browser" x:Key="out_BrowserInstance" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
+        </InArgument>
         <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("VISSignPageException").ToString]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeoutMedium" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISSignPageException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoice folder: VG_Invoices" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
@@ -227,59 +241,27 @@
     </Assign>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadFilesOnVisPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="VISPortal\UploadFilesOnVisPortal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeoutMedium" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISInvoiceDetailsPageNotAvailableException&#x9;Vanguard: VIS : Invoice details page not available&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" xml:space="preserve">[in_Config("VISInvoiceDetailsPageNotAvailableException	Vanguard: VIS : Invoice details page not available").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
         <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Directory.GetFiles(in_VisUrl,&quot;*xlsx&quot;).OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToList(0)" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FileExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FileNotAvailableException&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">[Directory.GetFiles(in_VisUrl,"*xlsx").OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToList(0)]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FileExceptionMessage">[in_Config("FileNotAvailableException").ToString]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateRecordsOnPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="VISPortal\ValidateRecordsOnPortal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeoutMedium" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherPageUrl" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SelectStatusOptionOnVis&quot;).ToString" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_PortalRecords" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="flatFileRowCount" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl">[in_PaymentVoucherPageUrl]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">[in_Config("SelectStatusOptionOnVis").ToString]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">[out_dt_PortalRecords]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">[flatFileRowCount]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1303.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1303.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SetTransactionStatus_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="52">
@@ -261,7 +261,7 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <If.Then>
-                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Config(&quot;StatusForBusinessException&quot;).ToString,datetime.Now.ToString(in_Config(&quot;BotRunDateFormat&quot;).ToString)}]" DataTable="[io_dt_StatusReport]" DisplayName="Add Data Row: Business exception" sap:VirtualizedContainerService.HintSize="334,190" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Config(&quot;StatusForBusinessException&quot;).ToString,in_BusinessException.Message,datetime.Now.ToString(in_Config(&quot;BotRunDateFormat&quot;).ToString)}]" DataTable="[io_dt_StatusReport]" DisplayName="Add Data Row: Business exception" sap:VirtualizedContainerService.HintSize="334,190" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
                   </If.Then>
                 </If>
                 <Sequence sap2010:Annotation.AnnotationText="Includes custom log fields to the log message.&#xA;They are removed after logging to prevent duplicated status messages about a single transaction." DisplayName="Log business exception with additional logging fields" sap:VirtualizedContainerService.HintSize="484,372.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_13">
@@ -364,24 +364,14 @@
                 </TryCatch>
                 <ui:AddLogFields DisplayName="Add transaction log fields (System Exception)" sap:VirtualizedContainerService.HintSize="512,22" sap2010:WorkflowViewState.IdRef="AddLogFields_6">
                   <ui:AddLogFields.Fields>
-                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">
-                      <Literal x:TypeArguments="x:String">ApplicationException</Literal>
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_TransactionNumber.ToString" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionID">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionID" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionField1">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionField1" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionField2">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionField2" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionStatus">ApplicationException</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionNumber">[io_TransactionNumber.ToString]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionID">[in_TransactionID]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionField1">[in_TransactionField1]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="logF_TransactionField2">[in_TransactionField2]</InArgument>
                   </ui:AddLogFields.Fields>
                 </ui:AddLogFields>
-                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Config(&quot;StatusForSystemException&quot;).ToString,datetime.Now.ToString(in_Config(&quot;BotRunDateFormat&quot;).ToString)}]" DataTable="[io_dt_StatusReport]" DisplayName="Add Data Row: system exception" sap:VirtualizedContainerService.HintSize="512,190" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{in_Config(&quot;StatusForSystemException&quot;).ToString,in_SystemException.Message,datetime.Now.ToString(in_Config(&quot;BotRunDateFormat&quot;).ToString)}]" DataTable="[io_dt_StatusReport]" DisplayName="Add Data Row: system exception" sap:VirtualizedContainerService.HintSize="512,190" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
                 <Assign DisplayName="Increment consecutive exceptions counter" sap:VirtualizedContainerService.HintSize="512,62" sap2010:WorkflowViewState.IdRef="Assign_12">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Int32">[io_ConsecutiveSystemExceptions]</OutArgument>

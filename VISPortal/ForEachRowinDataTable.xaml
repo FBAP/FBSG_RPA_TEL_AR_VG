@@ -3,11 +3,17 @@
     <x:Property Name="in_dt_FlatFile" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_dt_PortalRecords" Type="InArgument(sd:DataTable)" />
     <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="in_DelayBefore" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_TimeOut" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_PaymentVoucherUrl" Type="InArgument(x:String)" />
+    <x:Property Name="in_InvoiceFolderPath" Type="InArgument(x:String)" />
   </x:Members>
   <this:ForEachRowinDataTable.in_dt_PortalRecords>
     <InArgument x:TypeArguments="sd:DataTable" />
   </this:ForEachRowinDataTable.in_dt_PortalRecords>
-  <sap:VirtualizedContainerService.HintSize>1150,1956.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,524</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -43,7 +49,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="32">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -76,153 +82,64 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_FlatFile]" DisplayName="For Each Row in Data Table - Flat file" sap:VirtualizedContainerService.HintSize="714.666666666667,1892" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-    <ui:ForEachRow.Body>
-      <ActivityAction x:TypeArguments="sd:DataRow">
-        <ActivityAction.Argument>
-          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="FlatFileRow" />
-        </ActivityAction.Argument>
-        <Sequence DisplayName="Body: Flat file" sap:VirtualizedContainerService.HintSize="680.666666666667,1773.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_PortalRecords]" DisplayName="For Each Row in Data Table - Portal records" sap:VirtualizedContainerService.HintSize="638.666666666667,1681.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-            <ui:ForEachRow.Body>
-              <ActivityAction x:TypeArguments="sd:DataRow">
-                <ActivityAction.Argument>
-                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                </ActivityAction.Argument>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="604.666666666667,1562.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="x:String" Name="aaName" />
-                    <Variable x:TypeArguments="x:Int32" Name="rowCounter" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <Assign DisplayName="Assign: Row counter" sap:VirtualizedContainerService.HintSize="562.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_3">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[rowCounter]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[rowCounter+1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="aaname" DisplayName="Get Attribute: AAName of invoice number" sap:VirtualizedContainerService.HintSize="562.666666666667,204.666666666667" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
-                    <ui:GetAttribute.Result>
-                      <OutArgument x:TypeArguments="x:String">[aaName]</OutArgument>
-                    </ui:GetAttribute.Result>
-                    <ui:GetAttribute.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7e188775-a4c1-491a-bb9e-93d0d83dd002" InformativeScreenshot="10ebabbcd0fa0e17a849352d75b44493" Selector="&lt;html app='chrome.exe' title='VIS eSupply - Payment Voucher Registration List' /&gt;&lt;webctrl tableCol='12' tableRow='2' tag='TD' /&gt;">
-                        <ui:Target.TimeoutMS>
-                          <InArgument x:TypeArguments="x:Int32" />
-                        </ui:Target.TimeoutMS>
-                        <ui:Target.WaitForReady>
-                          <InArgument x:TypeArguments="ui:WaitForReady" />
-                        </ui:Target.WaitForReady>
-                      </ui:Target>
-                    </ui:GetAttribute.Target>
-                  </ui:GetAttribute>
-                  <If Condition="[aaName.Contains(FlatFileRow(&quot;Invoice Num&quot;).ToString)]" DisplayName="If: Match portal invoice number" sap:VirtualizedContainerService.HintSize="562.666666666667,1022" sap2010:WorkflowViewState.IdRef="If_2">
-                    <If.Then>
-                      <Sequence DisplayName="Sequence: Click EDIT function" sap:VirtualizedContainerService.HintSize="526,827.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_8">
-                        <Sequence.Variables>
-                          <Variable x:TypeArguments="x:Boolean" Name="isFormExists" />
-                        </Sequence.Variables>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Edit" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-                          <ui:Click.CursorPosition>
-                            <ui:CursorPosition Position="Center">
-                              <ui:CursorPosition.OffsetX>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:CursorPosition.OffsetX>
-                              <ui:CursorPosition.OffsetY>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:CursorPosition.OffsetY>
-                            </ui:CursorPosition>
-                          </ui:Click.CursorPosition>
-                          <ui:Click.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b76496cb-bb37-4f71-8afc-d9e4b94e9494" InformativeScreenshot="08251305355cc2974f7e53bbc22c09e6" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='*VIS*' /&gt;&lt;webctrl src='images/edit.gif' tableRow='{0}' tag='IMG' /&gt;&quot;, rowCounter)]">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                              <ui:Target.WaitForReady>
-                                <InArgument x:TypeArguments="ui:WaitForReady" />
-                              </ui:Target.WaitForReady>
-                            </ui:Target>
-                          </ui:Click.Target>
-                        </ui:Click>
-                        <ui:LogMessage DisplayName="Log Message: Clicked on Edit function" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Clicked on Edit function&quot;]" />
-                        <ui:UiElementExists DisplayName="Element Exists: Invoice NO" Exists="[isFormExists]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
-                          <ui:UiElementExists.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="9743ff6f-2c81-424b-a904-807e2c4518f3" InformativeScreenshot="2513ef0f7e1705e1952ff87b3dabde41" Selector="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='*Invoice NO*' /&gt;">
-                              <ui:Target.TimeoutMS>
-                                <InArgument x:TypeArguments="x:Int32" />
-                              </ui:Target.TimeoutMS>
-                              <ui:Target.WaitForReady>
-                                <InArgument x:TypeArguments="ui:WaitForReady" />
-                              </ui:Target.WaitForReady>
-                            </ui:Target>
-                          </ui:UiElementExists.Target>
-                        </ui:UiElementExists>
-                        <If Condition="[isFormExists]" DisplayName="If: Payment Voucher form exists" sap:VirtualizedContainerService.HintSize="484,308.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <If.Then>
-                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke MatchDeatils workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="VISPortal\MatchDeatils.xaml">
-                              <ui:InvokeWorkflowFile.Arguments>
-                                <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile">
-                                  <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_FlatFile" />
-                                </InArgument>
-                                <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem" />
-                              </ui:InvokeWorkflowFile.Arguments>
-                            </ui:InvokeWorkflowFile>
-                          </If.Then>
-                        </If>
-                      </Sequence>
-                    </If.Then>
-                  </If>
-                  <Assign DisplayName="Assign: Increment row counter" sap:VirtualizedContainerService.HintSize="562.666666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[rowCounter]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[rowCounter+1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                </Sequence>
-              </ActivityAction>
-            </ui:ForEachRow.Body>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:ForEachRow>
-        </Sequence>
-      </ActivityAction>
-    </ui:ForEachRow.Body>
+  <Sequence DisplayName="Sequence: For each row in data table" sap:VirtualizedContainerService.HintSize="476,459.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-        <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-  </ui:ForEachRow>
+    <ui:LogMessage DisplayName="Log Message: Performing operations on VIS portal" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Performing operations on VIS portal&quot;]" />
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_FlatFile]" DisplayName="For Each Row in Data Table - Flat file" sap:VirtualizedContainerService.HintSize="434,232.666666666667" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+      <ui:ForEachRow.Body>
+        <ActivityAction x:TypeArguments="sd:DataRow">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="FlatFileRow" />
+          </ActivityAction.Argument>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ForEachRowPortalrecords workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\ForEachRowPortalrecords.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_PortalRecords" />
+              </InArgument>
+              <InArgument x:TypeArguments="sd:DataRow" x:Key="in_FlatFileRow">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="FlatFileRow" />
+              </InArgument>
+              <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_FlatFile" />
+              </InArgument>
+              <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
+                <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
+              </InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeOut" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherUrl" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderPath" />
+              </InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </ActivityAction>
+      </ui:ForEachRow.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachRow>
+  </Sequence>
 </Activity>

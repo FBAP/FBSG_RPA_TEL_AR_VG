@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="VisPortalOtpVerification" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="VisPortalOtpVerification" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_RetryInterval" Type="InArgument(x:TimeSpan)" />
@@ -18,7 +18,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1853.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1466</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>VisPortalOtpVerification_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -81,23 +81,25 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Data.Entity</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="VIS portal OTP verification " DisplayName="VisPortalOtpVerification" sap:VirtualizedContainerService.HintSize="986,1788.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="VIS portal OTP verification " DisplayName="VisPortalOtpVerification" sap:VirtualizedContainerService.HintSize="698,1401.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: VIS portal OTP verification flow - Started" sap:VirtualizedContainerService.HintSize="944,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;VIS portal OTP verification flow - Started&quot;]" />
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: OTP verification panel" sap:VirtualizedContainerService.HintSize="944,1396.66666666667" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="cfa62616c7e1d4f1bc85637c1d7ed18d" Selector="&lt;html app='chrome.exe' title='*otp*' /&gt;">
+    <ui:LogMessage DisplayName="Log Message: VIS portal OTP verification flow - Started" sap:VirtualizedContainerService.HintSize="656,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;VIS portal OTP verification flow - Started&quot;]" />
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: OTP verification panel" sap:VirtualizedContainerService.HintSize="656,1009.33333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="cfa62616c7e1d4f1bc85637c1d7ed18d" Selector="&lt;html app='chrome.exe' title='*otp*' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="910,1250.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="622,863.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="isOtpPanelExists" />
             </Sequence.Variables>
@@ -106,10 +108,10 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added for VIS portal OTP Verification page" DisplayName="Retry Scope: VIS OTP Verification panel" sap:VirtualizedContainerService.HintSize="868,411.333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
+            <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added for VIS portal OTP Verification page" DisplayName="Retry Scope: VIS OTP Verification panel" sap:VirtualizedContainerService.HintSize="580,411.333333333333" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
               <ui:RetryScope.ActivityBody>
                 <ActivityAction>
-                  <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Action: Refresh browser" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,7 +138,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:RetryScope>
-            <If sap2010:Annotation.AnnotationText="Check if VIS portal otp verification screen available or not.&#xA;If No, then sends exception email and throws exception." Condition="[isOtpPanelExists]" DisplayName="If: VIS OTP panel exists" sap:VirtualizedContainerService.HintSize="868,707.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+            <If sap2010:Annotation.AnnotationText="Check if VIS portal otp verification screen available or not.&#xA;If No, then sends exception email and throws exception." Condition="[isOtpPanelExists]" DisplayName="If: VIS OTP panel exists" sap:VirtualizedContainerService.HintSize="580,320" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -145,130 +147,31 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap2010:Annotation.AnnotationText="Get OTP from email and verifies OTP" DisplayName="Sequence: OTP verification" sap:VirtualizedContainerService.HintSize="622,501.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <Sequence.Variables>
-                    <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessage" />
-                    <Variable x:TypeArguments="x:String" Name="emailOtp" />
-                    <Variable x:TypeArguments="x:Boolean" Name="isVisPortalExists" />
-                  </Sequence.Variables>
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:RetryScope DisplayName="Retry Scope: OTP sequence" sap:VirtualizedContainerService.HintSize="580,52.6666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_2" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
-                    <ui:RetryScope.ActivityBody>
-                      <ActivityAction>
-                        <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="376,991.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="35000" DisplayName="Click: Send Verifying" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-                            <ui:Click.CursorPosition>
-                              <ui:CursorPosition Position="Center">
-                                <ui:CursorPosition.OffsetX>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:CursorPosition.OffsetX>
-                                <ui:CursorPosition.OffsetY>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:CursorPosition.OffsetY>
-                              </ui:CursorPosition>
-                            </ui:Click.CursorPosition>
-                            <ui:Click.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="125b091e-9688-43f2-a071-a5490fcbee06" InformativeScreenshot="a541b76e0bacc32bc085596e92be237d" Selector="&lt;webctrl aria-role='img' id='send_verify-btnIconEl' tag='SPAN' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-                            </ui:Click.Target>
-                          </ui:Click>
-                          <ui:LogMessage DisplayName="Log Message: OTP email sent" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;OTP sent on email&quot;]" />
-                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get OTP email" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Outlook\GetEmails.xaml">
-                            <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_Filter" />
-                              <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[in_Config("OutlookFolderNameForOtp").ToString]</InArgument>
-                              <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">[mailMessage]</OutArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_AccountName">[in_Config("OutlookAccountName").ToString]</InArgument>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("OtpMailNotFoundException").ToString]</InArgument>
-                            </ui:InvokeWorkflowFile.Arguments>
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                          </ui:InvokeWorkflowFile>
-                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ExtractOtpFromEmail workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Outlook\ExtractOtpFromEmail.xaml">
-                            <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">[mailMessage]</InArgument>
-                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                              <OutArgument x:TypeArguments="x:String" x:Key="out_EmailOtp">[emailOtp]</OutArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_OtpEmailSubjectFilter">FW: VIS eSupply OTP Verification</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("OtpVerificationFailedException").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_OtpSplitStringValue">[in_Config("OtpSplitStringValue").ToString]</InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_RegularException">[in_Config("RegexForOtp").ToString]</InArgument>
-                            </ui:InvokeWorkflowFile.Arguments>
-                          </ui:InvokeWorkflowFile>
-                          <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: OTP" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[emailOtp]">
-                            <ui:TypeInto.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c0b91ece-57e2-4d0b-8604-442068dc0ca6" InformativeScreenshot="b5ee0bca4e62dc2c10998a6e34ea67f9" Selector="&lt;webctrl tag='INPUT' aaname='*OTP*' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-                            </ui:TypeInto.Target>
-                          </ui:TypeInto>
-                          <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Verify button" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-                            <ui:Click.CursorPosition>
-                              <ui:CursorPosition Position="Center">
-                                <ui:CursorPosition.OffsetX>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:CursorPosition.OffsetX>
-                                <ui:CursorPosition.OffsetY>
-                                  <InArgument x:TypeArguments="x:Int32" />
-                                </ui:CursorPosition.OffsetY>
-                              </ui:CursorPosition>
-                            </ui:Click.CursorPosition>
-                            <ui:Click.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ef3532f0-facf-44fb-a66b-24b3058cac20" InformativeScreenshot="76e14f4430b68f94bc5ff79da4d67f41" Selector="&lt;html app='chrome.exe' title='otp_verify_panel' /&gt;&lt;webctrl aria-role='img' tag='SPAN' colName='*Verify*' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-                            </ui:Click.Target>
-                          </ui:Click>
-                        </Sequence>
-                      </ActivityAction>
-                    </ui:RetryScope.ActivityBody>
-                    <ui:RetryScope.Condition>
-                      <ActivityFunc x:TypeArguments="x:Boolean">
-                        <ui:UiElementExists DisplayName="Element Exists: Payment voucher tab on vis portal" Exists="[isVisPortalExists]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
-                          <ui:UiElementExists.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="dab5c2cb-17c9-425a-889e-83db41c4d1d7" InformativeScreenshot="07d9893f0c204c38173cf24fdbff0c79" Selector="&lt;html app='chrome.exe' title='*VIS*' /&gt;&lt;webctrl aaname='Payment Vouchers' tag='A' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-                          </ui:UiElementExists.Target>
-                        </ui:UiElementExists>
-                      </ActivityFunc>
-                    </ui:RetryScope.Condition>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                  </ui:RetryScope>
-                  <If sap2010:Annotation.AnnotationText="Checks if &quot;payment voucher&quot; tab present- VIS home page" Condition="[isVisPortalExists]" DisplayName="If: VIS portal home page is available" sap:VirtualizedContainerService.HintSize="580,286" sap2010:WorkflowViewState.IdRef="If_3">
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <If.Then>
-                      <ui:LogMessage DisplayName="Log Message: VIS portal opened successfully" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;VIS portal opened successfully&quot;]" />
-                    </If.Then>
-                    <If.Else>
-                      <Throw sap2010:Annotation.AnnotationText="Throws &quot;VIS portal home page not accessible&quot; exception" DisplayName="Throw: VIS portal home page no accessible" Exception="[new SystemException(in_ExceptionMessageVisHomePage)]" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="Throw_2">
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </Throw>
-                    </If.Else>
-                  </If>
-                </Sequence>
+                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke OTPverification workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="VISPortal\OTPverification.xaml">
+                  <ui:InvokeWorkflowFile.Arguments>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                      <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
+                      <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
+                      <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="in_RetryInterval" />
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessageVisHomePage">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISPortalHomePageNotAvailableExceptionVISPortalHomePageNotAvailableExceptionVISPortalHomePageNotAvailableException&quot;).ToString" />
+                    </InArgument>
+                  </ui:InvokeWorkflowFile.Arguments>
+                </ui:InvokeWorkflowFile>
               </If.Then>
               <If.Else>
                 <Throw sap2010:Annotation.AnnotationText="Throws system exception - VIS OTP Verification not available" DisplayName="Throw: VIS portal OTP Panel not avilable" Exception="[New SystemException(in_ExceptionMessageOtpPage)]" sap:VirtualizedContainerService.HintSize="200,84" sap2010:WorkflowViewState.IdRef="Throw_1">
@@ -290,6 +193,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:BrowserScope>
-    <ui:LogMessage DisplayName="Log Message: VIS portal OTP verification flow - Ended" sap:VirtualizedContainerService.HintSize="944,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;VIS portal OTP verification flow - Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: VIS portal OTP verification flow - Ended" sap:VirtualizedContainerService.HintSize="656,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;VIS portal OTP verification flow - Ended&quot;]" />
   </Sequence>
 </Activity>

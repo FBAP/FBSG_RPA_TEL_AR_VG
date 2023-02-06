@@ -7,6 +7,9 @@
     <x:Property Name="in_OnBehalfName" Type="InArgument(x:String)" />
     <x:Property Name="in_PaymentVoucherUrl" Type="InArgument(x:String)" />
     <x:Property Name="in_InvoiceFolderPath" Type="InArgument(x:String)" />
+    <x:Property Name="in_DelayBefore" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_DelayAfter" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -110,14 +113,26 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
     <ui:LogMessage DisplayName="Log Message: Processign invoice" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processing Invoice Number: &quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get invoice email from the folder" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Outlook\GetEmails.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get invoice email from the folder" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Outlook\GetEmailsInvoice.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">["@SQL=urn:schemas:httpmail:subject LIKE '%"+in_TransactionItem("Invoice Num").ToString+"%'"]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[in_InvoiceFolderName]</InArgument>
-        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">[mailMessage]</OutArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("InvoiceEmailNotFoundException").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[in_TransactionItem("Invoice Num").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;@SQL=urn:schemas:httpmail:subject LIKE '%&quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString+&quot;%'&quot;" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderName" />
+        </InArgument>
+        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">
+          <mva:VisualBasicReference x:TypeArguments="scg:List(snm:MailMessage)" ExpressionText="mailMessage" />
+        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;InvoiceEmailNotFoundException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -127,12 +142,8 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Create invoice folder" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderPath+in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">
-          <Literal x:TypeArguments="x:Boolean" Value="True" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_InvoiceFolderPath+in_TransactionItem("Invoice Num").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
       </ui:InvokeWorkflowFile.Arguments>
@@ -144,47 +155,27 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadEmailAttachment workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Outlook\DownloadEmailAttachment.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">
-          <mva:VisualBasicValue x:TypeArguments="scg:List(snm:MailMessage)" ExpressionText="mailMessage" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderPath+in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FilterForPdfAttachment&quot;).ToString" />
-        </InArgument>
+        <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">[mailMessage]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_InvoiceFolderPath+in_TransactionItem("Invoice Num").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">[in_Config("FilterForPdfAttachment").ToString]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage" />
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_OnBehalfName" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[in_TransactionItem("Invoice Num").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName">[in_OnBehalfName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ForEachRowPortalrecords workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="VISPortal\ForEachRowPortalrecords.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="in_dt_PortalRecords" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_FlatFileRow" />
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">[in_dt_PortalRecords]</InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_FlatFileRow">[in_TransactionItem]</InArgument>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_FlatFile" />
-        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="in_TransactionItem" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherUrl" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderPath" />
-        </InArgument>
+        <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[in_TransactionItem]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_Timeout]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">[in_PaymentVoucherUrl]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">[in_InvoiceFolderPath]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:CommentOut DisplayName="Comment Out - Delete after testing" sap:VirtualizedContainerService.HintSize="334.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
