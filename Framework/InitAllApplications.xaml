@@ -20,7 +20,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1596</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -119,7 +119,9 @@
         <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
           <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
         </InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
+        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
+          <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="in_RetryInterval" />
+        </InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
           <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
         </InArgument>
