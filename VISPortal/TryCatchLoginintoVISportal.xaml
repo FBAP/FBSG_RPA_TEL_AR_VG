@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TryCatchLoginintoVISportal" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TryCatchLoginintoVISportal" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_DelayBefore" Type="InArgument(x:Int32)" />
@@ -6,7 +6,7 @@
     <x:Property Name="in_Timeout" Type="InArgument(x:Int32)" />
     <x:Property Name="in_ExceptionMessage" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1148,1888</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,2126</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="25">
@@ -69,7 +69,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <TryCatch DisplayName="Try Catch: Login into VIS portal" sap:VirtualizedContainerService.HintSize="602.666666666667,1823.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+  <TryCatch DisplayName="Try Catch: Login into VIS portal" sap:VirtualizedContainerService.HintSize="602.666666666667,2061.33333333333" sap2010:WorkflowViewState.IdRef="TryCatch_1">
     <TryCatch.Variables>
       <Variable x:TypeArguments="x:String" Name="exceptionFilePath" />
     </TryCatch.Variables>
@@ -80,10 +80,8 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <TryCatch.Try>
-      <Sequence DisplayName="Sequence: Login" sap:VirtualizedContainerService.HintSize="564,1585.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_15">
+      <Sequence DisplayName="Sequence: Login" sap:VirtualizedContainerService.HintSize="526,1823.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_15">
         <Sequence.Variables>
-          <Variable x:TypeArguments="x:String" Name="visUsername" />
-          <Variable x:TypeArguments="ss:SecureString" Name="visPassword" />
           <Variable x:TypeArguments="x:Boolean" Name="isImageCaptcha" />
           <Variable x:TypeArguments="x:Boolean" Name="isVerifyButtonExists" />
         </Sequence.Variables>
@@ -92,51 +90,71 @@
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;VisCredentials&quot;).ToString]" DisplayName="Get Credential: VIS portal" sap:VirtualizedContainerService.HintSize="522,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[visPassword]" Username="[visUsername]">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </ui:GetRobotCredential>
-        <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: VIS User Name" EmptyField="True" sap:VirtualizedContainerService.HintSize="522,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[visUsername]">
-          <ui:TypeInto.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d968d928-0e7e-4e1d-91a8-23e44a4a679c" InformativeScreenshot="a28384182b1550bb7615c84691859108" Selector="&lt;webctrl tag='INPUT' name='account' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-          </ui:TypeInto.Target>
-        </ui:TypeInto>
-        <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Secure Text: VIS password" EmptyField="True" sap:VirtualizedContainerService.HintSize="522,106" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[visPassword]" SimulateType="True">
-          <ui:TypeSecureText.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8e50168e-10ba-44a6-9b1f-3c477bb24bf3" InformativeScreenshot="f98f797aea47add8b17d7e472458cffd" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='*tsi*' /&gt;&lt;ctrl name='Sign in' role='dialog' /&gt;&lt;ctrl name='Password' role='editable text' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-          </ui:TypeSecureText.Target>
-        </ui:TypeSecureText>
-        <ui:LogMessage DisplayName="Log Message: Username and password entered - VIS" sap:VirtualizedContainerService.HintSize="522,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Username and password of VIS portal is entered&quot;]" />
-        <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: I am not robot" sap:VirtualizedContainerService.HintSize="522,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
-          <ui:Click.CursorPosition>
-            <ui:CursorPosition Position="Center">
-              <ui:CursorPosition.OffsetX>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:CursorPosition.OffsetX>
-              <ui:CursorPosition.OffsetY>
-                <InArgument x:TypeArguments="x:Int32" />
-              </ui:CursorPosition.OffsetY>
-            </ui:CursorPosition>
-          </ui:Click.CursorPosition>
-          <ui:Click.Target>
-            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5435957c-23ce-4ceb-b014-c3117f0cb20c" InformativeScreenshot="2b71770ef1f6f2f3557888817079c45e" Selector="&lt;webctrl tableRow='7' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' class='recaptcha-checkbox-border' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
-          </ui:Click.Target>
-        </ui:Click>
-        <ui:UiElementExists DisplayName="Element Exists: Skip button - Image " Exists="[isImageCaptcha]" sap:VirtualizedContainerService.HintSize="522,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+        <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser: Login Page" sap:VirtualizedContainerService.HintSize="484,891.333333333333" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="951aefeaae69754a9bee07863d26e6e2" Selector="&lt;html app='chrome.exe' title='*VIS eSupply*' /&gt;">
+          <ui:BrowserScope.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,745.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="visUsername" />
+                  <Variable x:TypeArguments="ss:SecureString" Name="visPassword" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="[in_Config(&quot;VisCredentials&quot;).ToString]" DisplayName="Get Credential: VIS portal" sap:VirtualizedContainerService.HintSize="334,52.6666666666667" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1" Password="[visPassword]" Username="[visUsername]">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:GetRobotCredential>
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: VIS User Name" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[visUsername]">
+                  <ui:TypeInto.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d968d928-0e7e-4e1d-91a8-23e44a4a679c" InformativeScreenshot="a28384182b1550bb7615c84691859108" Selector="&lt;webctrl tag='INPUT' name='account' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
+                  </ui:TypeInto.Target>
+                </ui:TypeInto>
+                <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Secure Text: VIS password" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[visPassword]" SimulateType="True">
+                  <ui:TypeSecureText.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8e50168e-10ba-44a6-9b1f-3c477bb24bf3" InformativeScreenshot="f98f797aea47add8b17d7e472458cffd" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='*tsi*' /&gt;&lt;ctrl name='Sign in' role='dialog' /&gt;&lt;ctrl name='Password' role='editable text' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
+                  </ui:TypeSecureText.Target>
+                </ui:TypeSecureText>
+                <ui:LogMessage DisplayName="Log Message: Username and password entered - VIS" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Username and password of VIS portal is entered&quot;]" />
+                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: I am not robot" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                  <ui:Click.CursorPosition>
+                    <ui:CursorPosition Position="Center">
+                      <ui:CursorPosition.OffsetX>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetX>
+                      <ui:CursorPosition.OffsetY>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:CursorPosition.OffsetY>
+                    </ui:CursorPosition>
+                  </ui:Click.CursorPosition>
+                  <ui:Click.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5435957c-23ce-4ceb-b014-c3117f0cb20c" InformativeScreenshot="2b71770ef1f6f2f3557888817079c45e" Selector="&lt;webctrl tableRow='7' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' class='recaptcha-checkbox-border' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
+                  </ui:Click.Target>
+                </ui:Click>
+              </Sequence>
+            </ActivityAction>
+          </ui:BrowserScope.Body>
+        </ui:BrowserScope>
+        <ui:UiElementExists DisplayName="Element Exists: Skip button - Image " Exists="[isImageCaptcha]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
           <ui:UiElementExists.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a9fcec49-e8ec-4ec5-be2d-a396ac4549c5" InformativeScreenshot="a48d1465cec11fd94f32f72baa711c29" Selector="&lt;webctrl src='https://www.google.com/recaptcha/api2/bframe?hl=en&amp;amp;v=*' tag='IFRAME' /&gt;&lt;webctrl id='recaptcha-verify-button' tag='BUTTON' aaname='Skip' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
           </ui:UiElementExists.Target>
         </ui:UiElementExists>
-        <ui:UiElementExists DisplayName="Element Exists : Verify" Exists="[isVerifyButtonExists]" sap:VirtualizedContainerService.HintSize="522,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+        <ui:UiElementExists DisplayName="Element Exists : Verify" Exists="[isVerifyButtonExists]" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
           <ui:UiElementExists.Target>
             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="5e239604-9e77-4e6d-8a19-7f7a42ddfe79" InformativeScreenshot="7d837583fcd6c1ed73b4306f1d1d80a4" Selector="&lt;webctrl src='https://www.google.com/recaptcha/api2/bframe?hl=en&amp;amp;v=RGRQD9tdxHt*' tag='IFRAME' /&gt;&lt;webctrl id='recaptcha-verify-button' tag='BUTTON' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
           </ui:UiElementExists.Target>
         </ui:UiElementExists>
-        <If Condition="[isImageCaptcha or isVerifyButtonExists]" DisplayName="If: Image captcha exists" sap:VirtualizedContainerService.HintSize="522,508" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[isImageCaptcha or isVerifyButtonExists]" DisplayName="If: Image captcha exists" sap:VirtualizedContainerService.HintSize="484,508" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -153,12 +171,8 @@
               </sap:WorkflowViewStateService.ViewState>
               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TakeScreenshot workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Framework\TakeScreenshot.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_Folder">
-                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ExScreenshotsFolderPath&quot;).ToString" />
-                  </InArgument>
-                  <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">
-                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="exceptionFilePath" />
-                  </InOutArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="in_Folder">[in_Config("ExScreenshotsFolderPath").ToString]</InArgument>
+                  <InOutArgument x:TypeArguments="x:String" x:Key="io_FilePath">[exceptionFilePath]</InOutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <Throw sap2010:Annotation.AnnotationText="Throws system exception - Image captcha exists" DisplayName="Throw: Image captcha exists" Exception="[new SystemException(in_ExceptionMessage)]" sap:VirtualizedContainerService.HintSize="334,67.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_3">
@@ -193,20 +207,12 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Image captcha found" DisplayName="Invoke SendExceptionEmail workflow: Image Captch afound" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Outlook\SendExceptionEmail.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Subject">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ImageCaptchaFoundSubject&quot;).ToString" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_Body">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ImageCaptchaFoundBody&quot;).ToString" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Subject">[in_Config("ImageCaptchaFoundSubject").ToString]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_Body">[in_Config("ImageCaptchaFoundBody").ToString]</InArgument>
                 <InArgument x:TypeArguments="x:String" x:Key="in_CcEmailList" />
                 <InArgument x:TypeArguments="x:String" x:Key="in_RecipientsEmailList" />
-                <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="exceptionFilePath" />
-                </InArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">
-                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OutlookSentOnBehalfOnEmailName&quot;).ToString" />
-                </InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionAttachmentPath">[exceptionFilePath]</InArgument>
+                <InArgument x:TypeArguments="x:String" x:Key="in_SentOnBehalfOfName">[in_Config("OutlookSentOnBehalfOnEmailName").ToString]</InArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">

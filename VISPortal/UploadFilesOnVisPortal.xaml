@@ -22,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1148,1031.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1030.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadFilesOnVisPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -90,7 +90,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="526,966.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_14">
+  <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="667.333333333333,966" sap2010:WorkflowViewState.IdRef="Sequence_14">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isUploadFlatFileExists" />
     </Sequence.Variables>
@@ -101,9 +101,9 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Upload files on VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Upload files on VIS portal flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Checking for the flat file" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Checking if flat file present or not in the shared folder&quot;]" />
-    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists: Flat file without item details" Exists="[isUploadFlatFileExists]" sap:VirtualizedContainerService.HintSize="484,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_UploadFlatFilePath]" PathType="File" />
+    <ui:LogMessage DisplayName="Log Message: Upload files on VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="625.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Upload files on VIS portal flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Checking for the flat file" sap:VirtualizedContainerService.HintSize="625.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Checking if flat file present or not in the shared folder&quot;]" />
+    <ui:PathExists Resource="{x:Null}" DisplayName="Path Exists: Flat file without item details" Exists="[isUploadFlatFileExists]" sap:VirtualizedContainerService.HintSize="625.333333333333,90.6666666666667" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[in_UploadFlatFilePath]" PathType="File" />
     <If sap2010:Annotation.AnnotationText="If flat file for upload is present then only proceeds further" Condition="[isUploadFlatFileExists]" DisplayName="If: Flat file for upload exists" sap:VirtualizedContainerService.HintSize="625.333333333333,308.666666666667" sap2010:WorkflowViewState.IdRef="If_5">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -150,6 +150,6 @@
         </Throw>
       </If.Else>
     </If>
-    <ui:LogMessage DisplayName="Log Message: Upload files on VIS portal flow - Ended" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Upload files on VIS portal flow - Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Upload files on VIS portal flow - Ended" sap:VirtualizedContainerService.HintSize="625.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Upload files on VIS portal flow - Ended&quot;]" />
   </Sequence>
 </Activity>

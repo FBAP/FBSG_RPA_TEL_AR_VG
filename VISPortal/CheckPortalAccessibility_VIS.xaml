@@ -16,7 +16,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,2386.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>802.666666666667,1129.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckPortalAccessibility_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -55,7 +55,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="68">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -90,7 +90,6 @@
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <sap:WorkflowViewStateService.ViewState>
@@ -98,7 +97,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether VIS portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility: VIS" sap:VirtualizedContainerService.HintSize="912.666666666667,2322" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This .xaml file checks whether VIS portal is accessible or not.&#xA;If No, then sends exception email" DisplayName="CheckPortalAccessibility: VIS" sap:VirtualizedContainerService.HintSize="547.333333333333,1064.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="exceptionFilePath" />
     </Sequence.Variables>
@@ -109,15 +108,15 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="870.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot; Login into VIS portal flow - Started&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Opening VIS portal" sap:VirtualizedContainerService.HintSize="870.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Opening VIS portal&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow - Started" sap:VirtualizedContainerService.HintSize="505.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot; Login into VIS portal flow - Started&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Opening VIS portal" sap:VirtualizedContainerService.HintSize="505.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Opening VIS portal&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added to check whether VIS portal login page exists or not.&#xA;If not, it sends exception email" DisplayName="Try Catch: VIS Portal homepage" sap:VirtualizedContainerService.HintSize="870.666666666667,1864.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added to check whether VIS portal login page exists or not.&#xA;If not, it sends exception email" DisplayName="Try Catch: VIS Portal homepage" sap:VirtualizedContainerService.HintSize="505.333333333333,607.333333333333" sap2010:WorkflowViewState.IdRef="TryCatch_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
@@ -126,20 +125,21 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" sap2010:Annotation.AnnotationText="This activity opens TSI web portal on the chrome browser.&#xA;Below are the arguments that are used:&#xA;1. in_Portal = Specify URL of required portal which needs to be accessed.&#xA;2. out_BrowserInstance = Output variable which stores browser instance&#xA;3. in_ManualLoginFlag = Specify TRUE value if manual login requires else specify FALSE" BrowserType="Chrome" DisplayName="Open Browser: VIS portal" sap:VirtualizedContainerService.HintSize="832,1581.33333333333" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_BrowserInstance]" Url="[in_PortalUrl]">
+        <ui:OpenBrowser AutomaticallyDownloadWebDriver="{x:Null}" CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" sap2010:Annotation.AnnotationText="This activity opens TSI web portal on the chrome browser.&#xA;Below are the arguments that are used:&#xA;1. in_Portal = Specify URL of required portal which needs to be accessed.&#xA;2. out_BrowserInstance = Output variable which stores browser instance&#xA;3. in_ManualLoginFlag = Specify TRUE value if manual login requires else specify FALSE" BrowserType="Chrome" DisplayName="Open Browser: VIS portal" sap:VirtualizedContainerService.HintSize="466.666666666667,324" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" UiBrowser="[out_BrowserInstance]" Url="[in_PortalUrl]">
           <ui:OpenBrowser.Body>
             <ActivityAction x:TypeArguments="x:Object">
               <ActivityAction.Argument>
                 <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
               </ActivityAction.Argument>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="798,1343.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="798,1456" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="isLoginPageExists" />
+                  <Variable x:TypeArguments="x:Boolean" Name="isRestoreExists" />
                 </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:MaximizeWindow Window="{x:Null}" sap2010:Annotation.AnnotationText="This activity maximizes window" ContinueOnError="True" DisplayName="Maximize Window: VIS portal" sap:VirtualizedContainerService.HintSize="756,67.3333333333333" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1">
@@ -149,8 +149,61 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:MaximizeWindow>
+                <ui:UiElementExists DisplayName="Element Exists: Restore" Exists="[isRestoreExists]" sap:VirtualizedContainerService.HintSize="756,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                  <ui:UiElementExists.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="59e57048-58f4-4482-bcce-16c3b0391e09" InformativeScreenshot="4d6a29b956baf72296a9d1fa64a01e0a" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Restore pages?' /&gt;&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Restore' role='push button' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:UiElementExists.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </ui:UiElementExists>
+                <If Condition="[isRestoreExists]" DisplayName="If Restore button exists" sap:VirtualizedContainerService.HintSize="756,300.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Close" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click.CursorPosition>
+                        <ui:CursorPosition Position="Center">
+                          <ui:CursorPosition.OffsetX>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetX>
+                          <ui:CursorPosition.OffsetY>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:CursorPosition.OffsetY>
+                        </ui:CursorPosition>
+                      </ui:Click.CursorPosition>
+                      <ui:Click.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f2b7a1e0-e997-474e-8412-2425461b890e" InformativeScreenshot="5ecc4a61eb65b0338ce9538e52100c82" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Restore pages?' /&gt;&lt;ctrl name='Restore pages?' role='alert' /&gt;&lt;ctrl name='Close' role='push button' /&gt;">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                          <ui:Target.WaitForReady>
+                            <InArgument x:TypeArguments="ui:WaitForReady" />
+                          </ui:Target.WaitForReady>
+                        </ui:Target>
+                      </ui:Click.Target>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:Click>
+                  </If.Then>
+                </If>
                 <ui:LogMessage DisplayName="Log Message: Checking for the VIS login page" sap:VirtualizedContainerService.HintSize="756,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Checking for the VIS portal login page&quot;]" />
-                <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: VIS Login" sap:VirtualizedContainerService.HintSize="756,492" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
+                <ui:RetryScope sap2010:Annotation.AnnotationText="Retry scope added to check if login page exists. &#xA;If not, it retries for 3 times." DisplayName="Retry Scope: VIS Login" sap:VirtualizedContainerService.HintSize="756,114.666666666667" sap2010:WorkflowViewState.IdRef="RetryScope_1" NumberOfRetries="[in_NumberOfRetries]" RetryInterval="[in_RetryInterval]">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
                       <Sequence DisplayName="Action" sap:VirtualizedContainerService.HintSize="200,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
@@ -181,12 +234,12 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:RetryScope>
-                <If sap2010:Annotation.AnnotationText="Checks if VIS portal login page available or not,&#xA;If yes then it login into portal and if no then it throws exception" Condition="[IsLoginPageExists]" DisplayName="If: VIS portal login page available" sap:VirtualizedContainerService.HintSize="756,519.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+                <If sap2010:Annotation.AnnotationText="Checks if VIS portal login page available or not,&#xA;If yes then it login into portal and if no then it throws exception" Condition="[IsLoginPageExists]" DisplayName="If: VIS portal login page available" sap:VirtualizedContainerService.HintSize="756,522.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -197,30 +250,14 @@
                   <If.Then>
                     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This .xaml file login into VIS portal" DisplayName="Invoke LoginVisPortal workflow" sap:VirtualizedContainerService.HintSize="334,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="VISPortal\LoginVisPortal.xaml">
                       <ui:InvokeWorkflowFile.Arguments>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ImageCaptchaFoundException&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-                          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:String" x:Key="in_ImageCaptchaException">
-                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;ImageCaptchaFoundException&quot;).ToString" />
-                        </InArgument>
-                        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
-                          <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="in_RetryInterval" />
-                        </InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_Timeout]</InArgument>
+                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("ImageCaptchaFoundException").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
+                        <InArgument x:TypeArguments="x:String" x:Key="in_ImageCaptchaException">[in_Config("ImageCaptchaFoundException").ToString]</InArgument>
+                        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[in_RetryInterval]</InArgument>
                       </ui:InvokeWorkflowFile.Arguments>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -272,7 +309,7 @@
         </ui:OpenBrowser>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="836.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="471.333333333333,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -321,6 +358,6 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow -Ended" sap:VirtualizedContainerService.HintSize="870.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Login into VIS portal flow - Ended&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Login into VIS portal flow -Ended" sap:VirtualizedContainerService.HintSize="505.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Login into VIS portal flow - Ended&quot;]" />
   </Sequence>
 </Activity>
