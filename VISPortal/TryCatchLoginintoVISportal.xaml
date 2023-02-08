@@ -114,14 +114,14 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:GetRobotCredential>
-                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: VIS User Name" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="True" Text="[visUsername]">
+                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Into: VIS User Name" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" SimulateType="False" Text="[visUsername]">
                   <ui:TypeInto.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="d968d928-0e7e-4e1d-91a8-23e44a4a679c" InformativeScreenshot="a28384182b1550bb7615c84691859108" Selector="&lt;webctrl tag='INPUT' name='account' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
                   </ui:TypeInto.Target>
                 </ui:TypeInto>
-                <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Secure Text: VIS password" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[visPassword]" SimulateType="True">
+                <ui:TypeSecureText AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBetweenKeys="{x:Null}" SendWindowMessages="{x:Null}" Activate="True" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Type Secure Text: VIS password" EmptyField="True" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="TypeSecureText_1" SecureText="[visPassword]" SimulateType="False">
                   <ui:TypeSecureText.Target>
-                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8e50168e-10ba-44a6-9b1f-3c477bb24bf3" InformativeScreenshot="f98f797aea47add8b17d7e472458cffd" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='*tsi*' /&gt;&lt;ctrl name='Sign in' role='dialog' /&gt;&lt;ctrl name='Password' role='editable text' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8e50168e-10ba-44a6-9b1f-3c477bb24bf3" InformativeScreenshot="f98f797aea47add8b17d7e472458cffd" Selector="&lt;webctrl tag='INPUT' name='password' parentid='loginForm' /&gt;" TimeoutMS="[in_Timeout]" WaitForReady="COMPLETE" />
                   </ui:TypeSecureText.Target>
                 </ui:TypeSecureText>
                 <ui:LogMessage DisplayName="Log Message: Username and password entered - VIS" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Username and password of VIS portal is entered&quot;]" />

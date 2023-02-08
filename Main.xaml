@@ -241,36 +241,16 @@
                       </Assign>
                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Process workflow" sap:VirtualizedContainerService.HintSize="438.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_24" UnSafe="False" WorkflowFileName="Framework\Process.xaml">
                         <ui:InvokeWorkflowFile.Arguments>
-                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                            <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">
-                            <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="dt_PortalRecords" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderName">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutlookFolderNameForInvoice&quot;).ToString" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;OutlookSentOnBehalfOnEmailName&quot;).ToString" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;VISPaymentVoucherPage&quot;).ToString" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">
-                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;InvoiceFolderPath&quot;).ToString" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(Config(&quot;DelayBefore&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(Config(&quot;DelayAfter&quot;).ToString)" />
-                          </InArgument>
-                          <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="CInt(Config(&quot;TimeoutMedium&quot;).ToString)" />
-                          </InArgument>
+                          <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                          <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">[dt_PortalRecords]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderName">[Config("OutlookFolderNameForInvoice").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName">[Config("OutlookSentOnBehalfOnEmailName").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherUrl">[Config("VISPaymentVoucherPage").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">[Config("InvoiceFolderPath").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[CInt(Config("DelayBefore").ToString)]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[CInt(Config("DelayAfter").ToString)]</InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[CInt(Config("TimeoutMedium").ToString)]</InArgument>
                         </ui:InvokeWorkflowFile.Arguments>
                       </ui:InvokeWorkflowFile>
                       <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438.666666666667,352" sap2010:WorkflowViewState.IdRef="TryCatch_10">
@@ -641,13 +621,13 @@
                                     <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dt_StatusReport" />
                                   </OutArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="in_FlatFileFolderPath">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;FlatFileFolderPath&quot;).ToString" />
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;FlatFileFolderPath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+Config(&quot;WithItemDetailsFolder&quot;).ToString" />
                                   </InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherPageUrl">
                                     <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;VISPaymentVoucherPage&quot;).ToString" />
                                   </InArgument>
                                   <InArgument x:TypeArguments="x:String" x:Key="in_WithoutItemDetailsPath">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;UploadFlatFilePath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)" />
+                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;UploadFlatFilePath&quot;).ToString+DateTime.Now.ToString(&quot;MMMyyyy&quot;)+&quot;\&quot;+Config(&quot;WithoutItemDetailsFolder&quot;).ToString" />
                                   </InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
@@ -947,25 +927,8 @@
       <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="Used in case transactions are stored in a DataTable, for example, after being retrieved from a spreadsheet." Name="dt_TransactionData" />
       <Variable x:TypeArguments="x:Int32" sap2010:Annotation.AnnotationText="Used to control the number of consecutive system exceptions." Default="0" Name="ConsecutiveSystemExceptions" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_PortalRecords" />
-      <Variable x:TypeArguments="x:String" Name="visUrl" />
-      <Variable x:TypeArguments="x:String" Name="visPaymentVoucherUrl" />
-      <Variable x:TypeArguments="x:String" Name="regexForOtp" />
-      <Variable x:TypeArguments="x:Int32" Name="delayBefore" />
-      <Variable x:TypeArguments="x:Int32" Name="delayAfter" />
-      <Variable x:TypeArguments="x:Int32" Name="timeoutMedium" />
-      <Variable x:TypeArguments="x:Int32" Name="timeoutShort" />
-      <Variable x:TypeArguments="x:Int32" Name="numberOfRetries" />
-      <Variable x:TypeArguments="x:String" Name="timeSpan" />
-      <Variable x:TypeArguments="x:String" Name="emailSubjectOtpFilter" />
-      <Variable x:TypeArguments="x:String" Name="flatFileFolderPath" />
-      <Variable x:TypeArguments="x:String" Name="invoiceFolderPath" />
-      <Variable x:TypeArguments="x:String" Name="outlookFolderNameForOtp" />
-      <Variable x:TypeArguments="x:String" Name="invoiceFolderName" />
-      <Variable x:TypeArguments="x:String" Name="uploadFlatFilePath" />
-      <Variable x:TypeArguments="x:String" Name="onBehalfOfName" />
       <Variable x:TypeArguments="sd:DataTable" Name="dt_StatusReport" />
       <Variable x:TypeArguments="x:String" Name="processFolderPath" />
-      <Variable x:TypeArguments="x:String" Name="statusReportName" />
     </StateMachine.Variables>
   </StateMachine>
 </Activity>
