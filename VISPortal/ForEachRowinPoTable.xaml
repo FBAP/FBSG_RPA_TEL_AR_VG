@@ -84,7 +84,6 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_ExtractDataTable]" DisplayName="For Each Row in Data Table - po table" sap:VirtualizedContainerService.HintSize="1320.66666666667,2354" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
@@ -96,7 +95,11 @@
         <Sequence DisplayName="Body: PO Table" sap:VirtualizedContainerService.HintSize="1286.66666666667,2235.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="prodCode" />
-            <Variable x:TypeArguments="x:Int32" Name="Counter" />
+            <Variable x:TypeArguments="x:Int32" Name="Counter">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:Int32" Value="2" />
+              </Variable.Default>
+            </Variable>
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -115,13 +118,10 @@
             <TryCatch.Try>
               <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text: ProductNumber" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
                 <ui:GetValue.Target>
-                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="afff92f0-58e4-4f3c-a1b0-7e4837f9f890" InformativeScreenshot="67bb1bd7eb1e07b205e16f9d8e753343" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='VIS eSupply - Payment Voucher Registration Form' /&gt;&lt;webctrl idx='2' tableRow='2' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='5' tableRow='{0}' tag='TD' /&gt;&quot;, counter)]">
+                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="afff92f0-58e4-4f3c-a1b0-7e4837f9f890" InformativeScreenshot="67bb1bd7eb1e07b205e16f9d8e753343" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='VIS eSupply - Payment Voucher Registration Form' /&gt;&lt;webctrl tableRow='{0}' tag='TABLE' idx='2' /&gt;&lt;webctrl isleaf='1' tableCol='5' tag='TD' /&gt;&quot;, Counter)]" WaitForReady="COMPLETE">
                     <ui:Target.TimeoutMS>
                       <InArgument x:TypeArguments="x:Int32" />
                     </ui:Target.TimeoutMS>
-                    <ui:Target.WaitForReady>
-                      <InArgument x:TypeArguments="ui:WaitForReady" />
-                    </ui:Target.WaitForReady>
                   </ui:Target>
                 </ui:GetValue.Target>
                 <ui:GetValue.Value>

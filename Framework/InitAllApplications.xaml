@@ -20,7 +20,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>802.666666666667,1596</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1619.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -99,7 +99,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376.666666666667,1531.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_9">
+  <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376.666666666667,1554.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="flatFileRowCount" />
     </Sequence.Variables>
@@ -110,19 +110,36 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log message (Initialize applications)" sap:VirtualizedContainerService.HintSize="334.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Trace" Message="[&quot;Opening applications...&quot;]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_VIS workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\CheckPortalAccessibility_VIS.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">[in_VisUrl]</InArgument>
-        <OutArgument x:TypeArguments="ui:Browser" x:Key="out_BrowserInstance" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("VISSignPageException").ToString]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="334.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_21">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CheckPortalAccessibility_VIS workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\CheckPortalAccessibility_VIS.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:String" x:Key="in_PortalUrl">[in_VisUrl]</InArgument>
+              <OutArgument x:TypeArguments="ui:Browser" x:Key="out_BrowserInstance" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
+              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("VISSignPageException").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Invoice folder: VG_Invoices" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice folder" sap:VirtualizedContainerService.HintSize="334.666666666667,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_Config("InvoiceFolderPath").ToString]</InArgument>
@@ -225,45 +242,81 @@
         <InArgument x:TypeArguments="x:Int32">[out_dt_FlatFile.Rows.Count]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadFilesOnVisPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="VISPortal\UploadFilesOnVisPortal.xaml">
+    <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click : Payment voucher registration" sap:VirtualizedContainerService.HintSize="334.666666666667,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+      <ui:Click.CursorPosition>
+        <ui:CursorPosition Position="Center">
+          <ui:CursorPosition.OffsetX>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetX>
+          <ui:CursorPosition.OffsetY>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:CursorPosition.OffsetY>
+        </ui:CursorPosition>
+      </ui:Click.CursorPosition>
+      <ui:Click.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f4e0b656-3e3e-4cd3-b0b2-87cd693c17a4" InformativeScreenshot="f1679c72e587bf48ffe5380dbcb20a69" Selector="&lt;html app='chrome.exe' title='VIS eSupply - Main' /&gt;&lt;webctrl tag='TABLE' /&gt;&lt;webctrl aaname='Payment Voucher Registration' tableRow='1' tag='A' /&gt;" WaitForReady="COMPLETE">
+          <ui:Target.TimeoutMS>
+            <InArgument x:TypeArguments="x:Int32" />
+          </ui:Target.TimeoutMS>
+        </ui:Target>
+      </ui:Click.Target>
+    </ui:Click>
+    <ui:CommentOut DisplayName="Comment Out: Dont delete - required" sap:VirtualizedContainerService.HintSize="334.666666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,206" sap2010:WorkflowViewState.IdRef="Sequence_20">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke UploadFilesOnVisPortal workflow" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="VISPortal\UploadFilesOnVisPortal.xaml">
+            <ui:InvokeWorkflowFile.Arguments>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("VISInvoiceDetailsPageNotAvailableException").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
+              <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
+              <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">[Directory.GetFiles(in_WithoutItemDetailsPath,"*xlsx").OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToList(0)]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_FileExceptionMessage">[in_Config("FileNotAvailableException").ToString]</InArgument>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            </ui:InvokeWorkflowFile.Arguments>
+          </ui:InvokeWorkflowFile>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateRecordsOnPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="VISPortal\ValidateRecordsOnPortal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
           <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeoutMedium" />
         </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
-        </InArgument>
         <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
           <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;VISInvoiceDetailsPageNotAvailableException&quot;).ToString" />
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
         </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherPageUrl" />
         </InArgument>
-        <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval" />
-        <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Directory.GetFiles(in_WithoutItemDetailsPath,&quot;*xlsx&quot;).OrderByDescending(Function(d) New FileInfo(d).CreationTime).ToList(0)" />
+        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SelectStatusOptionOnVis&quot;).ToString" />
         </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FileExceptionMessage">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;FileNotAvailableException&quot;).ToString" />
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">
+          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_PortalRecords" />
+        </OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">
+          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="flatFileRowCount" />
         </InArgument>
         <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
           <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateRecordsOnPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="VISPortal\ValidateRecordsOnPortal.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl">[in_PaymentVoucherPageUrl]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">[in_Config("SelectStatusOptionOnVis").ToString]</InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">[out_dt_PortalRecords]</OutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">[flatFileRowCount]</InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>

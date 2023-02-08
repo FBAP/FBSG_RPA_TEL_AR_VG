@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1305.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,1930</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DownloadEmailAttachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -89,7 +89,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap2010:Annotation.AnnotationText="Downloads email attachment from the outllook and saves to the folder" DisplayName="DownloadEmailAttachment" sap:VirtualizedContainerService.HintSize="476,1240.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_5">
+  <Sequence sap2010:Annotation.AnnotationText="Downloads email attachment from the outllook and saves to the folder" DisplayName="DownloadEmailAttachment" sap:VirtualizedContainerService.HintSize="702.666666666667,1865.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_5">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -97,21 +97,21 @@
         <x:Boolean x:Key="IsPinned">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Download attachment from Outlook flow - Started" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Download attachment from Outlook flow - Started&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Download attachment from Outlook flow - Started" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Download attachment from Outlook flow - Started&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="Log Message: Checking for email attachment" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Checking for email attachment&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Checking for email attachment" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Checking for email attachment&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for saving attachments. If not attachment found then sends exception" DisplayName="Try Catch: Save attachments" sap:VirtualizedContainerService.HintSize="434,714" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch sap2010:Annotation.AnnotationText="Try catch added for saving attachments. If not attachment found then sends exception" DisplayName="Try Catch: Save attachments" sap:VirtualizedContainerService.HintSize="660.666666666667,1338.66666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="attachmentOutput" />
       </TryCatch.Variables>
@@ -144,7 +144,7 @@
                       <x:Boolean x:Key="IsPinned">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:SaveMailAttachments sap2010:Annotation.AnnotationText="Saves attachment to the required folder.&#xA;Below are the parameters which are used: &#xA;1. item = Mail Message&#xA;2. in_FolderPath = Specify folder path where attachments should be stored&#xA;3. in_Filter = Specify filter which needs to be applied for saving attachments&#xA;4. attachmentOutput = Output variable of activity" Attachments="[attachmentOutput]" DisplayName="Save Attachments from outlook" ExcludeInlineAttachments="False" Filter="[in_Filter]" FolderPath="[in_FolderPath]" sap:VirtualizedContainerService.HintSize="200,281.333333333333" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[item]" OverwriteExisting="False">
+                  <ui:SaveMailAttachments sap2010:Annotation.AnnotationText="Saves attachment to the required folder.&#xA;Below are the parameters which are used: &#xA;1. item = Mail Message&#xA;2. in_FolderPath = Specify folder path where attachments should be stored&#xA;3. in_Filter = Specify filter which needs to be applied for saving attachments&#xA;4. attachmentOutput = Output variable of activity" Attachments="[attachmentOutput]" DisplayName="Save Attachments from outlook" ExcludeInlineAttachments="False" FolderPath="[in_FolderPath]" sap:VirtualizedContainerService.HintSize="200,281.333333333333" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_3" Message="[item]" OverwriteExisting="False">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -192,7 +192,7 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="400,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -212,18 +212,18 @@
             </ui:LogMessage>
           </ActivityAction>
         </Catch>
-        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="400,473.333333333333" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+        <Catch x:TypeArguments="ui:BusinessRuleException" sap:VirtualizedContainerService.HintSize="626.666666666667,22" sap2010:WorkflowViewState.IdRef="Catch`1_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              <x:Boolean x:Key="IsPinned">True</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ActivityAction x:TypeArguments="ui:BusinessRuleException">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="ui:BusinessRuleException" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Sequence: Send email for email not found" sap:VirtualizedContainerService.HintSize="376,402.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+            <Sequence DisplayName="Sequence: Send email for email not found" sap:VirtualizedContainerService.HintSize="376,434.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -258,7 +258,7 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:LogMessage DisplayName="Log Message: Download attachment from Outlook flow - Ended" sap:VirtualizedContainerService.HintSize="434,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Download attachment from Outlook flow - Ended&quot;]">
+    <ui:LogMessage DisplayName="Log Message: Download attachment from Outlook flow - Ended" sap:VirtualizedContainerService.HintSize="660.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Download attachment from Outlook flow - Ended&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">True</x:Boolean>
