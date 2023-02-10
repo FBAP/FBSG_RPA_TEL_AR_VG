@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1641.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>846,1725.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -99,9 +99,10 @@
       <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
       <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="526,1576.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="619.333333333333,1660.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="mailMessage" />
     </Sequence.Variables>
@@ -111,16 +112,28 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:LogMessage DisplayName="Log Message: Processign invoice" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processing Invoice Number: &quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString]" />
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get invoice email from the folder" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="484,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Outlook\GetEmailsInvoice.xaml">
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="577.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
+    <ui:LogMessage DisplayName="Log Message: Processign invoice" sap:VirtualizedContainerService.HintSize="577.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Processing Invoice Number: &quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString]" />
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Get invoice email from the folder" DisplayName="Invoke GetEmails workflow" sap:VirtualizedContainerService.HintSize="577.333333333333,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Outlook\GetEmailsInvoice.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">["@SQL=urn:schemas:httpmail:subject LIKE '%"+in_TransactionItem("Invoice Num").ToString+"%'"]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">[in_InvoiceFolderName]</InArgument>
-        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">[mailMessage]</OutArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">[in_Config("InvoiceEmailNotFoundException").ToString]</InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">[in_TransactionItem("Invoice Num").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Filter">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="&quot;@SQL=urn:schemas:httpmail:subject LIKE '%&quot;+in_TransactionItem(&quot;Invoice Num&quot;).ToString+&quot;%'&quot;" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FolderName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_InvoiceFolderName" />
+        </InArgument>
+        <OutArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="out_MailMessage">
+          <mva:VisualBasicReference x:TypeArguments="scg:List(snm:MailMessage)" ExpressionText="mailMessage" />
+        </OutArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_ExceptionMessage">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;InvoiceEmailNotFoundException&quot;).ToString" />
+        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceNumber">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem(&quot;Invoice Num&quot;).ToString" />
+        </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -128,7 +141,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Create invoice folder" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice" sap:VirtualizedContainerService.HintSize="484,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Create invoice folder" DisplayName="Invoke CreateSharedDriveFolder workflow: Invoice" sap:VirtualizedContainerService.HintSize="577.333333333333,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="SharedDrive\CreateSharedDriveFolder.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_InvoiceFolderPath+DateTime.Now.ToString("MMMyyyy")+"\"+in_TransactionItem("Invoice Num").ToString+"\"]</InArgument>
         <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsCreateSharedFolder">True</InArgument>
@@ -141,7 +154,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadEmailAttachment workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Outlook\DownloadEmailAttachment.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DownloadEmailAttachment workflow" sap:VirtualizedContainerService.HintSize="577.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Outlook\DownloadEmailAttachment.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="scg:List(snm:MailMessage)" x:Key="in_MailMessage">[mailMessage]</InArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_FolderPath">[in_InvoiceFolderPath+DateTime.Now.ToString("MMMyyyy")+"\"+in_TransactionItem("Invoice Num").ToString]</InArgument>
@@ -152,7 +165,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_OnBehalfName">[in_OnBehalfName]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ForEachRowPortalrecords workflow" sap:VirtualizedContainerService.HintSize="484,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="VISPortal\ForEachRowPortalrecords.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ForEachRowPortalrecords workflow" sap:VirtualizedContainerService.HintSize="577.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="VISPortal\ForEachRowPortalrecords.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="in_dt_PortalRecords">[in_dt_PortalRecords]</InArgument>
         <InArgument x:TypeArguments="sd:DataRow" x:Key="in_FlatFileRow">[in_TransactionItem]</InArgument>
@@ -166,15 +179,47 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_InvoiceFolderPath">[in_InvoiceFolderPath]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <If Condition="[in_TransactionItem isNot Nothing AndAlso (in_TransactionItem.GetType is GetType(system.Data.DataRow))]" DisplayName="If TransactionItem is a Datarow(Success)" sap:VirtualizedContainerService.HintSize="484,254.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_TransactionItem isNot Nothing AndAlso (in_TransactionItem.GetType is GetType(system.Data.DataRow))]" DisplayName="If TransactionItem is a Datarow(Success)" sap:VirtualizedContainerService.HintSize="577.333333333333,355.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <ui:MultipleAssign DisplayName="Multiple Assign: Success" sap:VirtualizedContainerService.HintSize="431.333333333333,160.666666666667" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+          <ui:MultipleAssign.AssignOperations>
+            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:Object">[in_TransactionItem(in_Config("StatusColumnName").ToString)]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:Object">[in_Config("StatusForSuccessful").ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:Object">[in_TransactionItem(in_Config("CommentsColumnName").ToString)]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:Object">[in_Config("CommentForSuccessful").ToString]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                <ui:AssignOperation.To>
+                  <OutArgument x:TypeArguments="x:Object">[in_TransactionItem(in_Config("BotRunDateColumnName").ToString)]</OutArgument>
+                </ui:AssignOperation.To>
+                <ui:AssignOperation.Value>
+                  <InArgument x:TypeArguments="x:Object">[datetime.Now.ToString(in_Config("BotRunDateFormat").ToString)]</InArgument>
+                </ui:AssignOperation.Value>
+              </ui:AssignOperation>
+            </scg:List>
+          </ui:MultipleAssign.AssignOperations>
+        </ui:MultipleAssign>
+      </If.Then>
     </If>
-    <ui:CommentOut DisplayName="Comment Out - Delete after testing" sap:VirtualizedContainerService.HintSize="484,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+    <ui:CommentOut DisplayName="Comment Out - Delete after testing" sap:VirtualizedContainerService.HintSize="577.333333333333,52.6666666666667" sap2010:WorkflowViewState.IdRef="CommentOut_4">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
@@ -213,6 +258,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="484,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
+    <ui:Comment DisplayName="Comment (placeholder)" sap:VirtualizedContainerService.HintSize="577.333333333333,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="//  Invoke steps of the process" />
   </Sequence>
 </Activity>
