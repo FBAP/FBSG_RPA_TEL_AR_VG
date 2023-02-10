@@ -1,14 +1,15 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="VISUploadError" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_UploadErrorFlag" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1918</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1150,2020</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>VISUploadError_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="27">
+    <scg:List x:TypeArguments="x:String" Capacity="54">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -36,6 +37,7 @@
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -66,9 +68,11 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="VISUploadError" sap:VirtualizedContainerService.HintSize="798,1853.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="VISUploadError" sap:VirtualizedContainerService.HintSize="726,1955.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="isUploadErrorExists" />
       <Variable x:TypeArguments="x:Boolean" Name="isUploadSuccessful" />
@@ -78,8 +82,8 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message: Checking for upload error" sap:VirtualizedContainerService.HintSize="756,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking for successful upload&quot;]" />
-    <ui:UiElementExists DisplayName="Element Exists: Upload successfully" Exists="[isUploadSuccessful]" sap:VirtualizedContainerService.HintSize="756,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+    <ui:LogMessage DisplayName="Log Message: Checking for upload error" sap:VirtualizedContainerService.HintSize="684,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Checking for successful upload&quot;]" />
+    <ui:UiElementExists DisplayName="Element Exists: Upload successfully" Exists="[isUploadSuccessful]" sap:VirtualizedContainerService.HintSize="684,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f25f2fd5-d55d-4792-98e2-0ab069b9f54d" InformativeScreenshot="6995e9db1995da79f7b3cd44f202f2b4" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='VIS eSupply - Payment Voucher Registration List - Google Chrome' /&gt;&lt;ctrl name='esupply.vis.com.tw says' role='dialog' /&gt;&lt;ctrl name='*Feedback confirm successfully!*' role='text' /&gt;">
           <ui:Target.TimeoutMS>
@@ -91,15 +95,23 @@
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[isUploadSuccessful]" DisplayName="If: Upload successful" sap:VirtualizedContainerService.HintSize="756,654" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[isUploadSuccessful]" DisplayName="If: Upload successful" sap:VirtualizedContainerService.HintSize="684,756" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence DisplayName="Sequence: Upload file" sap:VirtualizedContainerService.HintSize="376,490" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence DisplayName="Sequence: Upload file" sap:VirtualizedContainerService.HintSize="376,592" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: oK" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+          <Assign sap:VirtualizedContainerService.HintSize="334,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[out_UploadErrorFlag]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[cint(in_Config(&quot;DelayBefore&quot;).ToString)]" DelayMS="[cint(in_Config(&quot;DelayBefore&quot;).ToString)]" DisplayName="Click: oK" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
             <ui:Click.CursorPosition>
               <ui:CursorPosition Position="Center">
                 <ui:CursorPosition.OffsetX>
@@ -165,10 +177,17 @@
         </Sequence>
       </If.Then>
       <If.Else>
-        <ui:Comment DisplayName="Comment: Upload is not successful" sap:VirtualizedContainerService.HintSize="334,55.3333333333333" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Upload is not successful" />
+        <Assign DisplayName="Assign: Upload error flag" sap:VirtualizedContainerService.HintSize="262,62" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[out_UploadErrorFlag]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+          </Assign.Value>
+        </Assign>
       </If.Else>
     </If>
-    <ui:UiElementExists DisplayName="Element Exists: Upload Error" Exists="[isUploadErrorExists]" sap:VirtualizedContainerService.HintSize="756,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+    <ui:UiElementExists DisplayName="Element Exists: Upload Error" Exists="[isUploadErrorExists]" sap:VirtualizedContainerService.HintSize="684,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
       <ui:UiElementExists.Target>
         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="c19f5435-274c-46f8-8931-1412fe634d8b" InformativeScreenshot="d2537c05ea5aa327b0f35af4af403332" Selector="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='VIS eSupply - Payment Voucher Registration List - Google Chrome' /&gt;&lt;ctrl name='esupply.vis.com.tw says' role='dialog' /&gt;&lt;ctrl name='*Error: 發生錯誤異常。請再試一次，或聯絡VIS採購。*' role='text' /&gt;">
           <ui:Target.TimeoutMS>
@@ -180,7 +199,7 @@
         </ui:Target>
       </ui:UiElementExists.Target>
     </ui:UiElementExists>
-    <If Condition="[isUploadErrorExists]" DisplayName="If: Error while uploading fie" sap:VirtualizedContainerService.HintSize="756,640.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[isUploadErrorExists]" DisplayName="If: Error while uploading fie" sap:VirtualizedContainerService.HintSize="684,640.666666666667" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>

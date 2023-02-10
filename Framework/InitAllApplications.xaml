@@ -20,10 +20,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1619.33333333333</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>802.666666666667,1619.33333333333</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Initialization_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="34">
+    <scg:List x:TypeArguments="x:String" Capacity="68">
       <x:String>System.Activities.XamlIntegration</x:String>
       <x:String>System.Activities.Validation</x:String>
       <x:String>System.Activities</x:String>
@@ -58,6 +58,10 @@
       <x:String>System.Xml.Serialization</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
       <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Outlook.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -96,7 +100,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Open applications used in the process and do necessary initialization procedures (e.g., login)." DisplayName="Initialize All Applications" sap:VirtualizedContainerService.HintSize="376.666666666667,1554.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
@@ -166,7 +173,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="Sequence: Create transaction data" sap:VirtualizedContainerService.HintSize="334.666666666667,69.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
+    <Sequence DisplayName="Sequence: Create transaction data" sap:VirtualizedContainerService.HintSize="476,453.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_13">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="flatFilePath" />
       </Sequence.Variables>
@@ -293,30 +300,14 @@
     </ui:CommentOut>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke ValidateRecordsOnPortal workflow" sap:VirtualizedContainerService.HintSize="334.666666666667,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="VISPortal\ValidateRecordsOnPortal.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_TimeoutMedium" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_PaymentVoucherPageUrl" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;SelectStatusOptionOnVis&quot;).ToString" />
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">
-          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="out_dt_PortalRecords" />
-        </OutArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="flatFileRowCount" />
-        </InArgument>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_TimeoutMedium]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherListUrl">[in_PaymentVoucherPageUrl]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">[in_Config("SelectStatusOptionOnVis").ToString]</InArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_PortalRecords">[out_dt_PortalRecords]</OutArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="in_FlatFileRowCount">[flatFileRowCount]</InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
   </Sequence>
