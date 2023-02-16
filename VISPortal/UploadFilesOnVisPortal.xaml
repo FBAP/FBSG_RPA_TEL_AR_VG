@@ -22,7 +22,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1150,1030.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1153.33333333333,1030.66666666667</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>UploadFilesOnVisPortal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -87,7 +87,6 @@
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence sap2010:Annotation.AnnotationText="Upload files on VIS portal" DisplayName="UploadFilesOnVisPortal" sap:VirtualizedContainerService.HintSize="667.333333333333,966" sap2010:WorkflowViewState.IdRef="Sequence_14">
@@ -111,33 +110,22 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <If.Then>
-        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TryCatchPaymentvoucherregistrationflowVISportal workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="VISPortal\TryCatchPaymentvoucherregistrationflowVISportal.xaml">
+        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Uploads flat file on portal" DisplayName="Invoke TryCatchPaymentvoucherregistrationflowVISportal workflow" sap:VirtualizedContainerService.HintSize="379.333333333333,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="VISPortal\TryCatchPaymentvoucherregistrationflowVISportal.xaml">
           <ui:InvokeWorkflowFile.Arguments>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
-              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
-              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
-              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">
-              <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_NumberOfRetries" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">
-              <mva:VisualBasicValue x:TypeArguments="x:TimeSpan" ExpressionText="in_RetryInterval" />
-            </InArgument>
-            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_UploadFlatFilePath" />
-            </InArgument>
-            <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherException">
-              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ExceptionMessage" />
-            </InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">[in_Timeout]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">[in_DelayBefore]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">[in_DelayAfter]</InArgument>
+            <InArgument x:TypeArguments="x:Int32" x:Key="in_NumberOfRetries">[in_NumberOfRetries]</InArgument>
+            <InArgument x:TypeArguments="x:TimeSpan" x:Key="in_RetryInterval">[in_RetryInterval]</InArgument>
+            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_UploadFlatFilePath">[in_UploadFlatFilePath]</InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="in_PaymentVoucherException">[in_ExceptionMessage]</InArgument>
           </ui:InvokeWorkflowFile.Arguments>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
         </ui:InvokeWorkflowFile>
       </If.Then>
       <If.Else>

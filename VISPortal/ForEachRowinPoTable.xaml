@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ForEachRowinPoTable" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ForEachRowinPoTable" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
     <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
@@ -9,7 +9,7 @@
     <x:Property Name="in_StatusOption" Type="InArgument(x:String)" />
     <x:Property Name="in_dt_ExtractDataTable" Type="InArgument(sd:DataTable)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>1310.66666666667,3204.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1386.66666666667,3150</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -84,25 +84,30 @@
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_ExtractDataTable]" DisplayName="For Each Row in Data Table - po table" sap:VirtualizedContainerService.HintSize="1320.66666666667,3140" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_dt_ExtractDataTable]" DisplayName="For Each Row in Data Table - po table" sap:VirtualizedContainerService.HintSize="1396.66666666667,3085.33333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
     <ui:ForEachRow.Body>
       <ActivityAction x:TypeArguments="sd:DataRow">
         <ActivityAction.Argument>
           <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
         </ActivityAction.Argument>
-        <Sequence DisplayName="Body: PO Table" sap:VirtualizedContainerService.HintSize="1286.66666666667,3021.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Body: PO Table" sap:VirtualizedContainerService.HintSize="1362.66666666667,2966.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <Sequence.Variables>
             <Variable x:TypeArguments="x:String" Name="prodCode" />
-            <Variable x:TypeArguments="x:Int32" Default="1" Name="Counter" />
+            <Variable x:TypeArguments="x:Int32" Name="Counter">
+              <Variable.Default>
+                <Literal x:TypeArguments="x:Int32" Value="1" />
+              </Variable.Default>
+            </Variable>
           </Sequence.Variables>
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign: Increment loop counter" sap:VirtualizedContainerService.HintSize="1244.66666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign DisplayName="Assign: Increment loop counter" sap:VirtualizedContainerService.HintSize="1320.66666666667,62" sap2010:WorkflowViewState.IdRef="Assign_2">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
             </Assign.To>
@@ -110,7 +115,7 @@
               <InArgument x:TypeArguments="x:Int32">[Counter+1]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:LogMessage DisplayName="Log Message: Checking for PROD code" sap:VirtualizedContainerService.HintSize="1244.66666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Checking for product code&quot;]" />
+          <ui:LogMessage DisplayName="Log Message: Checking for PROD code" sap:VirtualizedContainerService.HintSize="1320.66666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Checking for product code&quot;]" />
           <TryCatch DisplayName="Try Catch: Get text" sap:VirtualizedContainerService.HintSize="1244.66666666667,52.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -158,10 +163,10 @@
             </TryCatch.Catches>
           </TryCatch>
           <ui:LogMessage DisplayName="Log Message: Portal product code" sap:VirtualizedContainerService.HintSize="1244.66666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Portal product code is: &quot;+prodCode]" />
-          <ui:LogMessage DisplayName="Log Message: Product code from flat file" sap:VirtualizedContainerService.HintSize="1244.66666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Product code from flat file: &quot;+in_TransactionItem(&quot;Customer Item&quot;).ToString]" />
-          <If Condition="[prodCode.Contains(in_TransactionItem(&quot;Customer Item&quot;).ToString)]" DisplayName="If: Product code matches to flat file" sap:VirtualizedContainerService.HintSize="1244.66666666667,2330.66666666667" sap2010:WorkflowViewState.IdRef="If_1">
+          <ui:LogMessage DisplayName="Log Message: Product code from flat file" sap:VirtualizedContainerService.HintSize="1320.66666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Product code from flat file: &quot;+in_TransactionItem(&quot;Customer Item&quot;).ToString]" />
+          <If Condition="[prodCode.Contains(in_TransactionItem(&quot;Customer Item&quot;).ToString)]" DisplayName="If: Product code matches to flat file" sap:VirtualizedContainerService.HintSize="1320.66666666667,2276" sap2010:WorkflowViewState.IdRef="If_1">
             <If.Then>
-              <Sequence DisplayName="Sequence - Match required details" sap:VirtualizedContainerService.HintSize="864.666666666667,2166.66666666667" sap2010:WorkflowViewState.IdRef="Sequence_7">
+              <Sequence DisplayName="Sequence - Match required details" sap:VirtualizedContainerService.HintSize="940.666666666667,2112" sap2010:WorkflowViewState.IdRef="Sequence_7">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="outOrigAmt" />
                 </Sequence.Variables>
@@ -170,8 +175,8 @@
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:LogMessage DisplayName="Log Message: Product code is matched" sap:VirtualizedContainerService.HintSize="822.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Product code matched&quot;]" />
-                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click; Checkbox" sap:VirtualizedContainerService.HintSize="822.666666666667,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                <ui:LogMessage DisplayName="Log Message: Product code is matched" sap:VirtualizedContainerService.HintSize="898.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Product code matched&quot;]" />
+                <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click; Checkbox" sap:VirtualizedContainerService.HintSize="898.666666666667,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
                       <ui:CursorPosition.OffsetX>
@@ -190,7 +195,7 @@
                     </ui:Target>
                   </ui:Click.Target>
                 </ui:Click>
-                <ui:LogMessage DisplayName="Log Message: Clicked on chk checkbox" sap:VirtualizedContainerService.HintSize="822.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Clicked on chk checkbox&quot;]" />
+                <ui:LogMessage DisplayName="Log Message: Clicked on chk checkbox" sap:VirtualizedContainerService.HintSize="898.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Clicked on chk checkbox&quot;]" />
                 <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_DOUBLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Orig Qty" sap:VirtualizedContainerService.HintSize="822.666666666667,106" sap2010:WorkflowViewState.IdRef="Click_4" KeyModifiers="None" MouseButton="BTN_LEFT">
                   <ui:Click.CursorPosition>
                     <ui:CursorPosition Position="Center">
@@ -233,8 +238,8 @@
                   </ui:GetValue.Value>
                 </ui:GetValue>
                 <ui:LogMessage DisplayName="Log Message: Out orig amt value of portal" sap:VirtualizedContainerService.HintSize="822.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Out orig amount from portal: &quot;+outOrigAmt]" />
-                <ui:LogMessage DisplayName="Log Message: Orig amt from flat file" sap:VirtualizedContainerService.HintSize="822.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Out orig amount from flat file:  &quot;+in_TransactionItem(&quot;Total Amount&quot;).ToString]" />
-                <If Condition="[outOrigAmt.Contains(in_TransactionItem(&quot;Total Amount&quot;).ToString)]" DisplayName="If: Out Orig Amt matches with total invoice amount" sap:VirtualizedContainerService.HintSize="822.666666666667,789.333333333333" sap2010:WorkflowViewState.IdRef="If_2">
+                <ui:LogMessage DisplayName="Log Message: Orig amt from flat file" sap:VirtualizedContainerService.HintSize="898.666666666667,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Out orig amount from flat file:  &quot;+in_TransactionItem(&quot;Total Amount&quot;).ToString]" />
+                <If Condition="[outOrigAmt.Contains(in_TransactionItem(&quot;Total Amount&quot;).ToString)]" DisplayName="If: Out Orig Amt matches with total invoice amount" sap:VirtualizedContainerService.HintSize="898.666666666667,734.666666666667" sap2010:WorkflowViewState.IdRef="If_2">
                   <If.Then>
                     <Sequence DisplayName="Sequence: Upload invoice" sap:VirtualizedContainerService.HintSize="376,570.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_17">
                       <sap:WorkflowViewStateService.ViewState>
@@ -259,13 +264,13 @@
                     </Sequence>
                   </If.Then>
                   <If.Else>
-                    <Sequence DisplayName="Sequence: Go back to the list page" sap:VirtualizedContainerService.HintSize="400.666666666667,625.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                    <Sequence DisplayName="Sequence: Go back to the list page" sap:VirtualizedContainerService.HintSize="401.333333333333,624.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_15">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Back" sap:VirtualizedContainerService.HintSize="358.666666666667,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                      <ui:Click AlterIfDisabled="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="[in_DelayBefore]" DelayMS="[in_DelayAfter]" DisplayName="Click: Back" sap:VirtualizedContainerService.HintSize="359.333333333333,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
                         <ui:Click.CursorPosition>
                           <ui:CursorPosition Position="Center">
                             <ui:CursorPosition.OffsetX>
@@ -286,50 +291,29 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                       </ui:Click>
-                      <ui:SelectItem AlterIfDisabled="{x:Null}" ContinueOnError="{x:Null}" DelayAfter="{x:Null}" DelayBefore="{x:Null}" DisplayName="Select Item: Status - Vendor Editing" sap:VirtualizedContainerService.HintSize="358.666666666667,134" sap2010:WorkflowViewState.IdRef="SelectItem_1" Item="[in_StatusOption]">
-                        <ui:SelectItem.Items>
-                          <scg:List x:TypeArguments="x:String" Capacity="8">
-                            <x:String>--</x:String>
-                            <x:String>Accounting Review</x:String>
-                            <x:String>Vendor Editing</x:String>
-                            <x:String>Accounting Un-match</x:String>
-                            <x:String>Accounting Processing</x:String>
-                          </scg:List>
-                        </ui:SelectItem.Items>
-                        <ui:SelectItem.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f6f77ffb-ccb9-4348-adea-3ae544e160d7" InformativeScreenshot="1ef5b608489acd3ea2d6496daf89314f" Selector="&lt;html app='chrome.exe' title='VIS eSupply - Payment Voucher Registration List' /&gt;&lt;webctrl tag='SELECT' name='qStatus' /&gt;" WaitForReady="COMPLETE">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                          </ui:Target>
-                        </ui:SelectItem.Target>
+                      <ui:LogMessage DisplayName="Log Message: Clicked on back" sap:VirtualizedContainerService.HintSize="359.333333333333,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Clicked on Back button&quot;]" />
+                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="This sequence selects vendor editing option" DisplayName="Invoke NavigateToPaymentVoucherPage workflow" sap:VirtualizedContainerService.HintSize="359.333333333333,144.666666666667" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="VISPortal\NavigateToPaymentVoucherPage.xaml">
+                        <ui:InvokeWorkflowFile.Arguments>
+                          <InArgument x:TypeArguments="x:String" x:Key="in_StatusOption">
+                            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_StatusOption" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayAfter">
+                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayAfter" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_DelayBefore">
+                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_DelayBefore" />
+                          </InArgument>
+                          <InArgument x:TypeArguments="x:Int32" x:Key="in_Timeout">
+                            <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="in_Timeout" />
+                          </InArgument>
+                        </ui:InvokeWorkflowFile.Arguments>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                      </ui:SelectItem>
-                      <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click: Query" sap:VirtualizedContainerService.HintSize="358.666666666667,106" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
-                        <ui:Click.CursorPosition>
-                          <ui:CursorPosition Position="Center">
-                            <ui:CursorPosition.OffsetX>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:CursorPosition.OffsetX>
-                            <ui:CursorPosition.OffsetY>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:CursorPosition.OffsetY>
-                          </ui:CursorPosition>
-                        </ui:Click.CursorPosition>
-                        <ui:Click.Target>
-                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ba1c9436-4c8d-421b-a077-63160bfa4bab" InformativeScreenshot="53bdb1f412e9dd0313092c2a11b10405" Selector="&lt;html app='chrome.exe' title='VIS eSupply - Payment Voucher Registration List' /&gt;&lt;webctrl aaname='Query' tag='INPUT' type='button' /&gt;" WaitForReady="COMPLETE">
-                            <ui:Target.TimeoutMS>
-                              <InArgument x:TypeArguments="x:Int32" />
-                            </ui:Target.TimeoutMS>
-                          </ui:Target>
-                        </ui:Click.Target>
-                      </ui:Click>
-                      <Throw sap2010:Annotation.AnnotationText="Invoice amount does not matches" DisplayName="Throw: Invoice amound does not matches" Exception="[New BusinessRuleException()]" sap:VirtualizedContainerService.HintSize="358.666666666667,67.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1">
+                      </ui:InvokeWorkflowFile>
+                      <Throw sap2010:Annotation.AnnotationText="Invoice amount does not matches" DisplayName="Throw: Invoice amound does not matches" Exception="[New BusinessRuleException()]" sap:VirtualizedContainerService.HintSize="359.333333333333,67.3333333333333" sap2010:WorkflowViewState.IdRef="Throw_1">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
